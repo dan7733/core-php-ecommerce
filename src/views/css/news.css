@@ -1,0 +1,62 @@
+.tintuc-container {
+    margin: 30px 80px 30px 80px;
+
+}
+.tintuc-container .row{
+   padding: 10px;
+
+}
+.tintuc-thumbnail {
+    max-width: 100%;
+    height: auto;
+    
+}
+.tintuc-link{
+    text-decoration: none !important;
+}
+.tintuc-link:hover{
+    opacity: 0.6;
+}
+.tintuc-tieude {
+    color: #333;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.noidung-tieude {
+    color: #666;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+/* Pagination styles */
+.news-list-pagination {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.news-list-pagination a {
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 2px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Pagination hover styles */
+.news-list-pagination a:hover {
+    background-color: #f2f2f2;
+}
+@media only screen and (max-width: 767px) {
+    .tintuc-container .row {
+        display: grid;
+        grid-template-columns: 1fr; /* Một cột duy nhất */
+        grid-gap: 10px; /* Khoảng cách giữa các phần tử */
+    }
+    
+    .tintuc-thumbnail {
+        justify-self: center; /* Căn giữa ảnh */
+    }
+}

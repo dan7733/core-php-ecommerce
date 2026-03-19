@@ -1,0 +1,62 @@
+.promotion-container {
+    margin: 30px 80px 30px 80px;
+
+}
+.promotion-container .row{
+   padding: 10px;
+
+}
+.promotion-thumbnail {
+    width: 35rem;
+    height: auto;
+    
+}
+.promotion-link{
+    text-decoration: none !important;
+}
+.promotion-link:hover{
+    opacity: 0.6;
+}
+.promotion-title {
+    color: #333;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.summary-title {
+    color: #666;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+/* Pagination styles */
+.promotion-list-pagination {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.promotion-list-pagination a {
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 2px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Pagination hover styles */
+.promotion-list-pagination a:hover {
+    background-color: #f2f2f2;
+}
+@media only screen and (max-width: 767px) {
+    .promotion-container .row {
+        display: grid;
+        grid-template-columns: 1fr; /* Một cột duy nhất */
+        grid-gap: 10px; /* Khoảng cách giữa các phần tử */
+    }
+    
+    .promotion-thumbnail {
+        justify-self: center; /* Căn giữa ảnh */
+    }
+}

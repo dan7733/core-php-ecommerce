@@ -1,0 +1,24 @@
+.chitiettintuc-container {
+    margin: 2rem 0 4rem 0;
+    text-align: center; /* Căn giữa cả phần tử container */
+}
+.chitiettintuc-tieude {
+    text-align: center; /* Căn giữa tiêu đề */
+    font-size: 2.5rem !important;
+    font-weight: bold; /* In đậm */
+    margin-bottom: 2rem;
+}
+.chitiettintuc-thumbnail {
+    display: block; /* Đảm bảo ảnh là phần tử block để có thể căn giữa */
+    margin: 0 auto; /* Căn giữa ảnh */
+    width: 70rem;
+    height: auto;
+}
+.noidung-chitiettintuc {
+    color: black;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin: 3rem;
+    text-align: left; /* Giữ nội dung tin tức ở trái */
+}
+

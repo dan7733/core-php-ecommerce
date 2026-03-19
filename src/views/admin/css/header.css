@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.tieude {
+    color: #ffffff;
+    text-align: center;
+    margin: 35px 0;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tieude i {
+    margin-right: 8px;
+}
+
+.container-phu {
+    width: 85%;
+    height: 105vh;
+    margin-left: 15%;
+    background-color: #f5f7fa;
+}
+
+.logo {
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    float: left;
+    transition: transform 0.3s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo1 {
+    margin-top: 45px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo1 a {
+    color: #ffffff;
+    font-size: 28px;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.logo1 a:hover {
+    color: #f1c40f;
+}
+
+.tieudebentrong {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.dssp {
+    margin-top: 30px;
+    margin-left: 10px;
+    list-style-type: none;
+    color: #ecf0f1;
+    font-size: 16px;
+}
+
+.dssp > li {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.dssp > li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.dssp li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.dssp li a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.dssp li label {
+    display: flex;
+    align-items: center;
+    color: #ecf0f1;
+    font-weight: 500;
+}
+
+.dssp li label i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.dssp li a:hover {
+    color: #f1c40f;
+}
+
+.dssp ul.submenu {
+    list-style-type: none;
+    padding-left: 30px;
+    display: none;
+}
+
+.dssp li.active ul.submenu {
+    display: block;
+}
+
+.dssp ul.submenu li {
+    padding: 8px 0;
+    transition: transform 0.2s;
+}
+
+.dssp ul.submenu li:hover {
+    transform: translateX(5px);
+}
+
+.dssp ul.submenu li a {
+    font-size: 15px;
+    color: #bdc3c7;
+}
+
+.dssp ul.submenu li a:hover {
+    color: #e74c3c;
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    padding: 15px;
+    cursor: pointer;
+    color: #2c3e50;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 980px) {
+    .logo {
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        height: 100vh;
+        z-index: 1000;
+        transform: translateX(0);
+    }
+
+    .logo.active {
+        transform: translateX(250px);
+    }
+
+    .container-phu {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .hamburger {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1100;
+    }
+
+    .tieude {
+        margin: 20px 0;
+    }
+}

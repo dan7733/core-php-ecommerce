@@ -1,0 +1,61 @@
+.text-center-dk{
+    color:  rgb(11, 124, 124); 
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 40px;}
+.form-control-dkmot{
+    width: 210px;
+    border: none;
+}
+.form-control-dkhai{
+    width: 210px;
+    margin-left: 20px;
+    border: none;
+}
+
+.custom-input-dk {
+    background-color: rgb(11, 124, 124); 
+    color: white; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+    font-size: 15px; 
+}
+
+.custom-input-dk::placeholder {
+    color: white;
+    font-size: 15px;
+}
+
+.navbar-expand-lg-dk img{
+    width: 100%;
+    margin-top: 100px;
+}
+.mothang {
+    font-size: 15px;
+
+}
+.xacnhandangky button{
+    background-color: rgb(11, 124, 124); 
+    color: white; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-size: 15px;
+    margin-top: 20px;
+    border: none;
+    font-size: 17px;
+}
+.xacnhandangky button:hover{
+    background-color: rgb(24, 106, 106);
+    cursor: pointer;
+}
+input.custom-input-dk:focus {
+    background-color: rgb(11, 124, 124) ; 
+    outline: none ; 
+    color: white;
+}
+.namngangdangnhap{
+    font-size: 15px;
+    margin-top: 10px;
+}

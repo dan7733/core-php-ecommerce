@@ -1,0 +1,63 @@
+.container-loai{
+    width: 85%;
+    height: 105vh;
+    margin-left: 15%;
+    background-color: #f0f0f0;
+
+}
+.tieude-loai{
+     
+    display: flex;
+    padding-top: 40px;
+    margin-left: 85px;
+    
+}
+
+.loai-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.loai-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.loai-group label {
+    width: 30%; /* Adjust the width as necessary */
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: right; /* Align label text to the right */
+}
+
+.loai-group input[type="text"],
+.loai-group input[type="file"]
+ {
+    width: 70%; /* Adjust the width as necessary */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}

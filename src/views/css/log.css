@@ -1,0 +1,62 @@
+.name {
+    display: flex;
+}
+.hinhdau{
+    width: 50%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.text-center{
+    font-size: 50px;
+    margin-top: -150px;
+    margin-bottom: 50px;
+    color: rgb(11, 124, 124);
+}
+input.custom-input {
+    background-color: rgb(11, 124, 124);
+    font-weight: 500;
+    padding: 10px 200px 10px 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+input.custom-input{
+    color: white !important;
+}
+input.custom-input::placeholder {
+    color: white !important;
+}
+.hinhcuoi{
+    width: 100%;
+}
+.form-check input {
+    width: 20px; 
+    height: 18px; 
+}
+.col .form-check-label { 
+    font-size: 15px;
+    margin-left: 20px;
+}
+.text-decoration-none{ 
+    font-size: 15px;
+    margin-left: 75px;
+}
+
+.thanhlogin button {
+    background-color: rgb(11, 124, 124);
+    font-weight: 500;
+    padding: 10px 180px 10px 10px; 
+    font-size: 15px;
+    color: white !important; /* Thay đổi màu chữ thành màu trắng */
+    text-indent: calc( 175px); /* Điều chỉnh giá trị này để căn giữa chữ */
+    border-radius: 5px;
+}
+
+.namngangdangki{
+    font-size: 15px;
+    margin-top: 10px;
+}
+input.custom-input:focus {
+    background-color: rgb(11, 124, 124) ; 
+    outline: none ; 
+    color: white;
+}

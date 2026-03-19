@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    color: white;
+    font-family: Arial, sans-serif;
+
+  }
+  
+  .container {
+    height: 615px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #07888a;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .hinhthucthanhtoan{
+    display: flex;
+  }
+  .hinhthucthanhtoan img{
+    cursor: pointer;
+    width: 91px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+.tt {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  .httt{
+    margin-bottom: 10px;
+  }
+  form {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  input[type="text"] {
+    width: 360px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .sdt{
+
+    width: 360px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+  }
+  button {
+    width: 100%;
+    padding: 15px;
+    background-color: rgb(76, 208, 201);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #00d0f5;
+  }
+  .chapnhan{
+    margin-left: 145px;
+    font-size: 17px;
+  }
+  .total {
+    margin-top: 20px;
+  }
+
+  .tong-tien{
+    display: flex;
+
+  }
+  .mottram{
+
+    margin-left: 197px;
+  }
+.hailam{
+    margin-left: 211px;
+}
+.hainam{
+    margin-left: 207px;
+}
+  .rong{
+    padding-bottom: 15px;
+  }
+
+  .click-chapnhan{
+    display: flex;
+  }

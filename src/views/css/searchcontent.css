@@ -1,0 +1,261 @@
+.find_product-container {
+    width: 95%;
+    background-color: var(--bright-white);
+    box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+}
+
+.find_product-list-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: var(--bright-white);
+    padding: 1rem 1rem 2rem 1rem;
+    text-align: center;
+    gap: 2.5rem; /* Khoảng cách giữa các sản phẩm */
+}
+
+.find_product-list-title {
+    margin-top: 1rem;
+    display: flex;
+    font-weight: bold;
+    font-size: 2.5rem;
+    padding: 2rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    color: var(--deep-green);
+    background-color: var(--bright-white);
+}
+
+.find_product-list-title.special {
+    color: var(--secondary-color);
+    background-color: var(--deep-green);
+}
+
+.find_product-list-product {
+    margin-top: 1.5rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    width: calc(20% - 2rem);
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+    background-color: var(--bright-white);
+    overflow: hidden;
+    position: relative;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.find_product-list-product.special {
+    border-color: var(--deep-green);
+}
+
+.find_product-list-product:hover {
+    border: 0.1rem solid var(--deep-green);
+}
+
+.find_product-img {
+    width: 100%;
+    height: 25rem;
+}
+
+.find_product-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.find_product-list-product:hover .find_product-img-overlay {
+    opacity: 0.7;
+}
+
+.find_product-hover-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.find_product-list-product:hover .find_product-hover-icons {
+    opacity: 1;
+}
+
+.find_product-hover-icons .fas {
+    margin: 0 1rem;
+    color: var(--bright-white);
+    font-size: 24px;
+}
+
+.find_product-hover-icons .fas:hover {
+    transform: scale(1.2);
+}
+
+.find_product-list-product a {
+    text-decoration: none;
+}
+
+.find_product-list-product a h2 {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--deep-green);
+}
+
+.find_product-price {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+}
+
+.discount-price {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border: 0.2rem solid var(--primary-color);
+    border-radius: 2rem;
+    box-shadow: 0px 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    background-color: #ff6f61;
+    color: white;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #888888;
+}
+
+.find_product-more {
+    width: 100%;
+    height: 7rem;
+    padding-bottom: 1rem;
+    background-color: var(--bright-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.find_product-more a .more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--deep-green);
+    border-radius: 0.8rem;
+    padding: 1rem 3rem;
+    color: var(--bright-white);
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.find_product-more a .more-button:hover {
+    background-color: var(--bright-white);
+    color: var(--deep-green);
+    border: 0.2rem solid var(--deep-green);
+    cursor: pointer;
+}
+
+.find_product-more a .more-button i {
+    margin-right: 0.5rem;
+}
+
+.find_product-more a .more-button i,
+.find_product-more a .more-button {
+    transition: transform 0.3s ease;
+}
+
+.find_product-more a .more-button:hover i,
+.find_product-more a .more-button:hover {
+    transform: translateX(0.5rem);
+}
+
+@media only screen and (max-width: 1200px) {
+    .find_product-list-product {
+        width: calc(20% - 0.5rem);
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .find_product-list-items {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1.5rem;
+    }
+
+    .find_product-list-product {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+        width: 20rem;
+    }
+
+    /* For Chrome and Safari */
+    .find_product-list-items::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    .find_product-list-items::-webkit-scrollbar-thumb {
+        background-color: var(--deep-green);
+        border-radius: 0;
+    }
+
+    /* For Firefox */
+    .find_product-list-items::-moz-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    .find_product-list-items::-moz-scrollbar-thumb {
+        background-color: var(--deep-green);
+        border-radius: 0;
+    }
+
+    /* For Edge */
+    .find_product-list-items::-ms-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    .find_product-list-items::-ms-scrollbar-thumb {
+        background-color: var(--deep-green);
+        border-radius: 0;
+    }
+}
+
+/* Pagination styles */
+.find_product-list-pagination {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.find_product-list-pagination a {
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 2px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Pagination hover styles */
+.find_product-list-pagination a:hover {
+    background-color: #f2f2f2;
+}

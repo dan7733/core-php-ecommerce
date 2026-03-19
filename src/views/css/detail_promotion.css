@@ -1,0 +1,26 @@
+.deltailpromotion-container {
+    margin: 2rem 0 4rem 0;
+    text-align: center; /* Center align the container */
+}
+
+.deltailpromotion-title {
+    text-align: center; /* Center align the title */
+    font-size: 2.5rem !important;
+    font-weight: bold; /* Bold */
+    margin-bottom: 2rem;
+}
+
+.deltailpromotion-thumbnail {
+    display: block; /* Ensure the image is a block element to center it */
+    margin: 0 auto; /* Center the image */
+    width: 70rem;
+    height: auto;
+}
+
+.content-deltailpromotion {
+    color: black;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin: 3rem;
+    text-align: left; /* Keep the news content left-aligned */
+}
