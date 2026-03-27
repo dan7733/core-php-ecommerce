@@ -1,61 +1,248 @@
-.text-center-dk{
-    color:  rgb(11, 124, 124); 
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    font-size: 40px;}
-.form-control-dkmot{
-    width: 210px;
-    border: none;
-}
-.form-control-dkhai{
-    width: 210px;
-    margin-left: 20px;
-    border: none;
+/* ==================== BIẾN MÀU CỤC BỘ ==================== */
+:root {
+    --auth-reg-primary: rgb(11, 124, 124);     /* Xanh mòng két đặc trưng */
+    --auth-reg-hover: rgb(15, 145, 145);      /* Xanh sáng hơn khi hover */
+    --auth-reg-bg: #f4f7f6;
 }
 
-.custom-input-dk {
-    background-color: rgb(11, 124, 124); 
-    color: white; 
-    padding: 10px; 
-    margin-bottom: 10px; 
-    border-radius: 5px; 
-    font-size: 15px; 
+/* ==================== LAYOUT TỔNG THỂ ==================== */
+body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--auth-reg-bg);
 }
 
-.custom-input-dk::placeholder {
-    color: white;
-    font-size: 15px;
-}
-
-.navbar-expand-lg-dk img{
+.auth-reg-wrapper {
     width: 100%;
-    margin-top: 100px;
+    min-height: calc(100vh - 100px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px 20px;
+    background-color: var(--auth-reg-bg);
+    overflow: hidden;
+    box-sizing: border-box;
 }
-.mothang {
-    font-size: 15px;
 
+.auth-reg-card {
+    display: flex;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(11, 124, 124, 0.15);
+    max-width: 1100px; /* Nới rộng hơn trang login vì có nhiều field */
+    width: 100%;
+    z-index: 10;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
 }
-.xacnhandangky button{
-    background-color: rgb(11, 124, 124); 
-    color: white; 
-    padding: 10px; 
-    border-radius: 5px; 
-    font-size: 15px;
-    margin-top: 20px;
-    border: none;
-    font-size: 17px;
+
+/* ==================== CỘT TRÁI (HÌNH ẢNH) ==================== */
+.auth-reg-image-side {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-right: 2px dashed #f0f0f0;
 }
-.xacnhandangky button:hover{
-    background-color: rgb(24, 106, 106);
+.auth-reg-logo {
+    max-width: 85%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+.auth-reg-image-side:hover .auth-reg-logo { transform: scale(1.08); }
+
+/* ==================== CỘT PHẢI (FORM ĐĂNG KÝ) ==================== */
+.auth-reg-form-side {
+    flex: 1.2;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.auth-reg-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.auth-reg-title {
+    font-size: 3.2rem; /* CHỮ KHỔNG LỒ Y NHƯ LOGIN */
+    color: var(--auth-reg-primary);
+    text-align: center;
+    margin: 0 0 25px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==================== THÔNG BÁO LỖI (ALERT BOX) ==================== */
+.auth-reg-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-size: 1.3rem; /* Chữ to rõ */
+    font-weight: bold;
+}
+.auth-reg-alert-error {
+    background-color: #fcebeb;
+    color: #e74c3c;
+    border: 2px solid #fad2d2;
+}
+.auth-reg-alert-error i { font-size: 1.8rem; }
+
+/* Hiệu ứng rung */
+.shake-anim { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes shake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+    40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* ==================== INPUT NHẬP LIỆU ==================== */
+.auth-reg-row {
+    display: flex;
+    gap: 15px;
+}
+.auth-reg-col {
+    flex: 1;
+}
+
+.auth-reg-input-group {
+    position: relative;
+    margin-bottom: 20px; /* Khoảng cách vừa phải để form không quá dài */
+}
+
+.auth-reg-icon-left {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.3rem;
+    z-index: 2;
+}
+
+.auth-reg-icon-right {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.3rem;
+    z-index: 2;
     cursor: pointer;
+    transition: 0.3s;
 }
-input.custom-input-dk:focus {
-    background-color: rgb(11, 124, 124) ; 
-    outline: none ; 
-    color: white;
+.auth-reg-icon-right:hover { color: #fff; }
+
+.auth-reg-input {
+    width: 100%;
+    background-color: var(--auth-reg-primary);
+    color: #fff !important;
+    padding: 16px 50px; 
+    font-size: 1.3rem; /* FONT SIZE TO RÕ Y NHƯ LOGIN */
+    font-weight: 500;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
 }
-.namngangdangnhap{
-    font-size: 15px;
+
+.auth-reg-input::placeholder { color: rgba(255, 255, 255, 0.75) !important; }
+.auth-reg-input:focus { 
+    background-color: var(--auth-reg-hover); 
+    box-shadow: 0 0 0 4px rgba(11, 124, 124, 0.25); 
+    transform: translateY(-2px);
+}
+
+/* ==================== NÚT ĐĂNG KÝ ==================== */
+.auth-reg-submit-btn {
+    width: 100%;
+    background-color: var(--auth-reg-primary);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.6rem; /* NÚT BẤM KHỔNG LỒ */
+    padding: 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(11, 124, 124, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
     margin-top: 10px;
+}
+
+.auth-reg-submit-btn:hover { 
+    background-color: var(--auth-reg-hover); 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px rgba(11, 124, 124, 0.4); 
+}
+
+/* ==================== LINK ĐĂNG NHẬP ==================== */
+.auth-reg-redirect {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 1.3rem; /* FONT TO RÕ */
+    color: #666;
+    font-weight: 500;
+}
+.auth-reg-redirect a {
+    color: var(--auth-reg-primary);
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.3s;
+    margin-left: 5px;
+}
+.auth-reg-redirect a:hover { color: var(--auth-reg-hover); text-decoration: underline; }
+
+/* ==================== SÓNG VECTOR & ANIMATIONS ==================== */
+.auth-reg-wave-bottom { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 1; opacity: 0.8; pointer-events: none; }
+
+.fade-up { opacity: 0; transform: translateY(40px); animation: fadeUpAnim 0.7s ease-out forwards; }
+@keyframes fadeUpAnim { to { opacity: 1; transform: translateY(0); } }
+
+.auth-reg-ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: authRipple 0.6s linear; background: rgba(255,255,255,0.4); pointer-events: none; }
+@keyframes authRipple { to { transform: scale(4); opacity: 0; } }
+
+/* ==================== RESPONSIVE TỐI ƯU MOBILE ==================== */
+@media (max-width: 992px) {
+    .auth-reg-card { max-width: 850px; }
+    .auth-reg-brand-side { padding: 30px; }
+    .auth-reg-form-side { padding: 40px 30px; }
+    .auth-reg-title { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+    .auth-reg-card { flex-direction: column; max-width: 500px; }
+    
+    /* Ẩn hoàn toàn cột hình ảnh để nhường chỗ cho Form */
+    .auth-reg-image-side { display: none !important; }
+    
+    .auth-reg-form-side { padding: 30px 20px; }
+    .auth-reg-title { font-size: 2.6rem; margin-bottom: 20px;}
+    .auth-reg-wave-bottom { display: none; }
+    
+    /* Bẻ gãy cột Họ / Tên thành hàng dọc trên điện thoại */
+    .auth-reg-row { flex-direction: column; gap: 0; }
+    
+    .auth-reg-submit-btn { font-size: 1.4rem; padding: 15px; }
+    .auth-reg-input { font-size: 1.2rem; padding: 15px 50px; }
 }

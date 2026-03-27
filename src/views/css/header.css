@@ -1,82 +1,198 @@
-.header-container {
-    z-index: 3;
-    position: relative; 
+/* ==================== BAO BỌC HEADER ==================== */
+.shop-header-wrapper {
+    background-color: var(--deep-green, #0a5c36);
+    padding: 10px 0; /* Thu gọn header lại một chút */
+    position: relative;
+    z-index: 101; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.header-color {
-    background-color: var(--deep-green);
+
+.shop-header-container {
+    width: 95%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px; /* Giảm khoảng cách giữa các khối */
+    flex-wrap: wrap; 
 }
-.headerlogo_no-text-decoration {
+
+/* ==================== LOGO ==================== */
+.shop-logo {
+    font-size: 26px !important; /* Vừa đủ to và sang trọng */
+    font-weight: 900 !important;
+    color: #ffffff !important;
     text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+.shop-logo:hover {
+    transform: scale(1.05); 
+}
+
+.shop-logo i {
+    font-size: 28px !important; /* Icon nhỉnh hơn chữ xíu */
+    color: #ffb300; 
+}
+
+/* ==================== THANH TÌM KIẾM ==================== */
+.shop-search-box {
+    flex: 1; 
+    max-width: 550px; /* Gọn lại để chừa chỗ cho menu */
+}
+
+.shop-search-box form {
+    display: flex;
+    background-color: #ffffff; 
+    border-radius: 50px; 
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.shop-search-box form:focus-within {
+    border-color: #ffb300; 
 }
 
 .search-input {
-    border-radius: 0.25rem !important;
-    height: 4rem !important;
-    width: 30rem !important;
-    font-size: 1.8rem !important;
-    border-top-left-radius: 2.5rem !important;
-    border-bottom-left-radius: 2.5rem !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-.search-btn{
-    font-size: 1.8rem !important;
-    width: auto;
-}
-.search-btn:hover, .login-btn:hover, .cart-btn:hover{
-    color: var(--deep-green);
-}
-.cart-margin{
-    margin-right: 20rem;
-}
-.cart-btn{
-    font-size: 1.8rem;
-}
-.cart-btn > i {
-    font-size: 1.8rem;
-}
-.login-btn{
-    font-size: 1.8rem !important;
-}
-.btn-toggler{
-    color: var(--pure-white);
-    border: solid 0.2rem;
-    font-size: 1.8rem;
-}
-@media (max-width: 992px) {
-    .header-nav {
-        margin-top: 1rem;
-    }
-    .cart-margin{
-        margin: 1rem 0 0 0 !important;
-    }
-    .login-margin{
-        margin: 1rem 0 !important;
-    }
-}
-.logout-btn:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-.logout-btn {
-    background-color: #ff6347; 
-    padding: 1rem;
+    flex: 1;
     border: none;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #fff;
+    padding: 10px 20px !important; /* Giảm độ dày ô tìm kiếm */
+    font-size: 15px !important; /* Chữ chuẩn mực 15px */
+    font-weight: 500;
+    outline: none;
+    color: #222;
 }
-.header-infor {
+
+.search-input::placeholder {
+    color: #888;
+    font-weight: normal;
+}
+
+.search-btn {
+    background-color: #ffffff !important; 
+    color: var(--deep-green, #0a5c36) !important; 
+    border: none;
+    padding: 0 20px !important; 
+    font-size: 18px !important; /* Kính lúp vừa vặn */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 1px solid #eeeeee; 
+}
+
+.search-btn:hover {
+    background-color: var(--deep-green, #0a5c36) !important; 
+    color: #ffffff !important; 
+}
+
+/* ==================== CÔNG CỤ ==================== */
+.shop-header-actions {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    gap: 15px;
 }
-.header-hi_user {
-    margin-right: 2rem;
+
+.header-user-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-.header-hi_user a{
-    font-weight: bold;
-    font-size: 1.8rem;
-    color: #fff;
-    text-decoration: none;
+
+/* NÚT GIỎ HÀNG & ĐĂNG NHẬP */
+.header-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 14.5px !important; /* Chữ kích thước chuẩn 14.5px */
+    font-weight: 600 !important;
+    padding: 8px 16px !important; /* Nút gọn gàng hơn */
+    border-radius: 10px; /* Bo góc nhẹ hơn */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: transparent;
+}
+
+.header-action-btn i {
+    font-size: 18px !important; /* Icon vừa với chữ */
+}
+
+.header-action-btn:hover {
+    background-color: #ffffff !important;
+    color: var(--deep-green, #0a5c36) !important;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Nút Đăng xuất */
+.logout-link {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-color: transparent !important;
+    padding: 8px 12px !important; 
+}
+
+.logout-link:hover {
+    background-color: #ff3b30 !important;
+    color: #ffffff !important;
+    border-color: #ff3b30 !important;
+}
+
+/* ==================== RESPONSIVE TỐI ƯU ==================== */
+@media (max-width: 1200px) {
+    .shop-header-container { gap: 15px; }
+    .shop-logo { font-size: 22px !important; }
+    .shop-logo i { font-size: 24px !important; }
+    .search-input { padding: 10px 15px !important; font-size: 14px !important; }
+    .header-action-btn { font-size: 13.5px !important; padding: 8px 12px !important; }
+}
+
+@media (max-width: 992px) {
+    .action-text { display: none !important; } 
+    .header-action-btn { 
+        padding: 10px !important; 
+        border-radius: 50%; /* Thành nút tròn cho gọn */
+        border: none !important;
+        background-color: rgba(255,255,255,0.15) !important;
+    }
+    .header-action-btn i { font-size: 20px !important; margin: 0; }
+    
+    .shop-logo { font-size: 24px !important; }
+    .shop-search-box { max-width: 50vw; }
+}
+
+/* GIAO DIỆN ĐIỆN THOẠI (MOBILE) */
+@media (max-width: 768px) {
+    .shop-header-wrapper { padding: 10px 0; }
+    .shop-header-container { gap: 10px; }
+    
+    .shop-logo {
+        order: 1; 
+        font-size: 22px !important;
+    }
+    .shop-logo i { font-size: 24px !important; }
+    
+    .shop-header-actions {
+        order: 2; 
+        gap: 8px;
+    }
+    
+    .shop-search-box {
+        order: 3; 
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+    
+    .search-input { padding: 10px 15px !important; font-size: 14px !important; } 
+    .search-btn { padding: 0 20px !important; font-size: 16px !important; }
+    .header-action-btn i { font-size: 18px !important; }
 }

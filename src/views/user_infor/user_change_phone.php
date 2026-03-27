@@ -1,177 +1,63 @@
+<div id="toast-container"></div>
 <?php
 if (isset($Phone_txtErro) && !empty($Phone_txtErro)) {
-    echo "<script>alert('$Phone_txtErro');</script>";
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { showToast('{$Phone_txtErro}', 'info'); });</script>";
 }
 ?>
 
 <style>
-/* ---------- Form Đổi Số Điện Thoại - Thiết kế đẹp, responsive ---------- */
-
-.form-change-phone {
-    min-height: calc(100vh - 140px); /* Điều chỉnh theo chiều cao header + footer nếu có */
-    display: flex;
-    align-items: center;
-    padding: 20px 15px;
-    background-color: #f5f8fb;
-}
-
-.card-phone {
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(33, 130, 130, 0.15);
-    overflow: hidden;
-    border: 1px solid rgba(33, 130, 130, 0.1);
-    max-width: 500px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.card-phone h4 {
-    background: linear-gradient(135deg, #218282, #1a6767);
-    color: white;
-    text-align: center;
-    padding: 25px 20px;
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.card-body {
-    padding: 40px 35px;
-}
-
-.form-phone {
-    margin-bottom: 30px;
-}
-
-.form-phone label {
-    display: block;
-    font-weight: 600;
-    color: #218282;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.form-phone input.formcontrol {
-    width: 100%;
-    padding: 14px 18px;
-    font-size: 1.1rem;
-    border: 2px solid #d0e0e0;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background-color: #f8fcfc;
-    color: #2c3e50;
-}
-
-.form-phone input.formcontrol:focus {
-    outline: none;
-    border-color: #218282;
-    background-color: white;
-    box-shadow: 0 0 0 4px rgba(33, 130, 130, 0.15);
-}
-
-.form-phone input.formcontrol::placeholder {
-    color: #aabbbd;
-    font-style: italic;
-}
-
-/* Nút submit */
-.btn-change-phone {
-    background: linear-gradient(135deg, #218282, #1a6767);
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 14px 30px;
-    border: none;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 300px;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(33, 130, 130, 0.25);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.btn-change-phone:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(33, 130, 130, 0.35);
-    background: linear-gradient(135deg, #1a6767, #155555);
-}
-
-.btn-change-phone:active {
-    transform: translateY(0);
-}
-
-/* Responsive cho mobile */
-@media (max-width: 767.98px) {
-    .card-phone h4 {
-        font-size: 1.6rem;
-        padding: 20px 15px;
-    }
-
-    .card-body {
-        padding: 30px 25px;
-    }
-
-    .form-phone input.formcontrol {
-        padding: 12px 16px;
-        font-size: 1rem;
-    }
-
-    .btn-change-phone {
-        padding: 12px 25px;
-        font-size: 1.05rem;
-    }
-
-    .form-change-phone {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-phone {
-        border-radius: 15px;
-    }
-
-    .card-body {
-        padding: 25px 20px;
-    }
-
-    .form-phone label {
-        font-size: 1rem;
-    }
-}
+    :root { --deep-green: #0a5c36; --danger-red: #e74c3c; }
+    .form-dashboard-wrapper { padding: 20px; animation: fadeUp 0.5s ease-out forwards; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .profile-card { background: #fff; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #eaeaea; max-width: 600px; margin: 0 auto; overflow: hidden; }
+    .profile-card-header { background-color: #fdf5f5; padding: 25px 30px; border-bottom: 2px solid #fcebeb; display: flex; align-items: center; gap: 15px; }
+    .profile-card-header i { font-size: 2.2rem; color: var(--danger-red); }
+    .profile-card-header h4 { margin: 0; font-size: 1.8rem; font-weight: 800; color: #222; text-transform: uppercase; }
+    .profile-card-body { padding: 35px 30px; }
+    .modern-form-group { margin-bottom: 25px; }
+    .modern-form-group label { display: block; font-size: 1.2rem; font-weight: 700; color: #555; margin-bottom: 8px; }
+    .modern-input { width: 100%; padding: 15px 18px; font-size: 1.3rem; border: 2px solid #ddd; border-radius: 10px; transition: 0.3s; outline: none; color: #222; }
+    .modern-input:focus { border-color: var(--danger-red); box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1); }
+    .btn-save-profile { background: var(--danger-red); color: #fff; border: none; padding: 16px 30px; font-size: 1.4rem; font-weight: bold; border-radius: 10px; width: 100%; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+    .btn-save-profile:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); }
+    
+    #toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .custom-toast { min-width: 320px; background: #fff; padding: 18px 25px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 15px; border-left: 6px solid var(--danger-red); transform: translateX(120%); transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #333;}
+    .custom-toast.show { transform: translateX(0); }
+    .custom-toast i { font-size: 1.8rem; color: var(--danger-red); }
+    
+    @media (max-width: 768px) { .profile-card-header { padding: 20px; } .profile-card-header h4 { font-size: 1.5rem; } .profile-card-body { padding: 25px 20px; } .modern-input { font-size: 1.2rem; padding: 12px; } .btn-save-profile { font-size: 1.3rem; } }
 </style>
 
-<div class="form-change-phone row justify-content-center">
-    <div class="col-md-6 col-12">
-        <div class="card-phone mt-5">
+<div class="form-dashboard-wrapper">
+    <div class="profile-card">
+        <div class="profile-card-header">
+            <i class="fas fa-phone-square-alt"></i>
             <h4>Đổi số điện thoại</h4>
-            <div class="card-body">
-                <form id="changephoneForm" method="post">
-                    <div class="form-phone">
-                        <label for="newphone">Số điện thoại mới</label>
-                        <input 
-                            type="tel" 
-                            name="phonemoi" 
-                            class="formcontrol" 
-                            id="newphone" 
-                            placeholder="Nhập số điện thoại mới (ví dụ: 0901234567)" 
-                            required 
-                            pattern="^0[1-9][0-9]{8}$" 
-                            title="Số điện thoại Việt Nam phải bắt đầu bằng 0 và có 10 chữ số">
-                    </div>
-
-                    <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" name="change-phone-btn" class="btn-change-phone btn btn-primary">
-                            Đổi số điện thoại
-                        </button>
-                    </div>
-                </form>
-            </div>
+        </div>
+        <div class="profile-card-body">
+            <form method="post">
+                <div class="modern-form-group">
+                    <label for="newphone">Số điện thoại di động mới</label>
+                    <input type="tel" name="phonemoi" class="modern-input" id="newphone" placeholder="Ví dụ: 0901234567" required pattern="^0[1-9][0-9]{8}$" title="SĐT phải bắt đầu bằng số 0 và có 10 chữ số">
+                </div>
+                <button type="submit" name="change-phone-btn" class="btn-save-profile">
+                    <i class="fas fa-save"></i> CẬP NHẬT SỐ ĐIỆN THOẠI
+                </button>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    function showToast(msg, type) {
+        const c = document.getElementById('toast-container');
+        if(!c) return;
+        const t = document.createElement('div');
+        t.className = `custom-toast ${type}`;
+        t.innerHTML = `<i class="fas fa-info-circle"></i> <span>${msg}</span>`;
+        c.appendChild(t);
+        setTimeout(() => t.classList.add('show'), 10);
+        setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 3000);
+    }
+</script>

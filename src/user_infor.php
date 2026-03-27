@@ -13,55 +13,44 @@ require './controllers/baseController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin cá nhân</title>
+    <title>Thông tin cá nhân | Tài khoản</title>
 
-    <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- CSS mới - tối ưu mobile -->
     <link rel="stylesheet" href="./views/css/user_info.css">
 </head>
 <body>
     <div class="main-wrapper">
 
-        <!-- HEADER CHÍNH (Desktop + Mobile) - Duy nhất một header đẹp -->
         <header class="main-header">
             <div class="container-fluid px-3 px-md-4">
                 <div class="d-flex align-items-center justify-content-between py-3">
-                    <!-- Nút mở sidebar (chỉ hiện mobile) -->
-                    <button id="sidebarToggle" class="btn btn-link text-white p-0">
-                        <i class="fas fa-bars fa-2xl"></i>
+                    
+                    <button id="sidebarToggle" class="btn-menu-mobile d-md-none">
+                        <i class="fas fa-bars"></i>
                     </button>
 
-                    <!-- Tiêu đề trang (mobile) / Logo (desktop) -->
-                    <h1 class="page-title mb-0 text-white font-weight-bold d-md-none">Thông tin cá nhân</h1>
-                    <a href="index.php" class="brand text-white font-weight-bold d-none d-md-flex align-items-center">
-                        <i class="fas fa-home mr-2"></i> Trang chủ
+                    <a href="index.php" class="brand-logo text-white">
+                        <i class="fas fa-store mr-2 d-none d-md-inline-block"></i>
+                        <span class="font-weight-bold">HỆ THỐNG CỬA HÀNG</span>
                     </a>
 
-                    <!-- Menu desktop -->
-                    <div class="desktop-menu d-none d-md-flex align-items-center">
-                        <a href="index.php" class="btn btn-outline-light mr-3">Trang chủ</a>
-                        <a href="index.php?controller=content_pro&action=showProducts" class="btn btn-outline-light">Sản phẩm</a>
+                    <div class="desktop-menu d-none d-md-flex align-items-center gap-3">
+                        <a href="index.php" class="header-btn"><i class="fas fa-home"></i> Trang chủ</a>
+                        <a href="index.php?controller=content_pro&action=showProducts" class="header-btn"><i class="fas fa-box-open"></i> Sản phẩm</a>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- OVERLAY khi mở sidebar (mobile) -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <!-- Layout chính -->
         <div class="d-flex" id="wrapper">
-            <!-- SIDEBAR -->
+            
             <?php require './views/user_infor/user_sidebar.php'; ?>
 
-            <!-- CONTENT -->
             <div id="page-content-wrapper" class="flex-grow-1">
-                <main class="content">
+                <main class="content-area">
                     <?php
                     if (isset($_GET['userinforcontroller'])) {
                         $controllerName = $_GET['userinforcontroller'] . 'Controller';
@@ -88,20 +77,27 @@ require './controllers/baseController.php';
         </div>
     </div>
 
-    <!-- JS toggle sidebar + overlay -->
     <script>
         const wrapper = document.getElementById('wrapper');
         const overlay = document.getElementById('sidebarOverlay');
         const toggleBtn = document.getElementById('sidebarToggle');
+        const closeBtn = document.getElementById('closeSidebar');
 
-        toggleBtn.addEventListener('click', function () {
+        // Mở/Đóng Sidebar trên Mobile
+        function toggleSidebar() {
             wrapper.classList.toggle('toggled');
             overlay.classList.toggle('active');
-        });
+        }
 
-        overlay.addEventListener('click', function () {
-            wrapper.classList.remove('toggled');
-            overlay.classList.remove('active');
+        if(toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+        if(closeBtn) closeBtn.addEventListener('click', toggleSidebar);
+        if(overlay) overlay.addEventListener('click', toggleSidebar);
+
+        // Hiệu ứng Fade-up khi load trang
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+            }, 100);
         });
     </script>
 </body>

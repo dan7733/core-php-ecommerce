@@ -5,7 +5,7 @@ class content_proController extends baseController {
         $this->loadModel('Content_proModel'); // Tải model Content_pro
         $this->contentProModel = new Content_pro(); // Khởi tạo model Content_pro
     }
-    public function showProducts($n = 10, $m = 5) {
+    public function showProducts($n = 8, $m = 4) {
         // Gọi phương thức từ model Content_pro để lấy sản phẩm mới
         $newProducts = $this->contentProModel->get_Newproduct($n);
         $productsByPhone = $this->contentProModel->get_Product(1, $m);

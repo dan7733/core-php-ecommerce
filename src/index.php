@@ -30,6 +30,7 @@ require './controllers/baseController.php';
     <link rel="stylesheet" href="./views/css/cart.css">
     <link rel="stylesheet" href="./views/css/promotion.css">
     <link rel="stylesheet" href="./views/css/detail_promotion.css">
+    <link rel="stylesheet" href="./views/css/user_infor.css">
 </head>
 
 <body>
@@ -65,7 +66,7 @@ require './controllers/baseController.php';
         } else {
             require './controllers/content_proController.php';
             $show_ProController = new content_proController();
-            $show_ProController->showProducts(10, 5);
+            $show_ProController->showProducts(8, 4);
         }
         ?>
     </div>

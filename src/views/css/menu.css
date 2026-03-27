@@ -1,62 +1,198 @@
-.menu-nav-container {
-    position: relative;
-    z-index: 2;
+/* ==================== GLOBAL VARIABLES ==================== */
+:root {
+    --eco-primary: var(--deep-green, #0a5c36);
+    --eco-bg-dark: #1f1f1f;
+    --eco-text-light: #ffffff;
+    --eco-sale: #ffc107; /* Vàng rực rỡ */
 }
-.menu-text {
-    color: var(--bright-white) !important;
-    font-size: 1.6rem;
-}
-.menu-nav {
+
+/* ==================== BAO BỌC THANH MENU ==================== */
+.eco-nav-wrapper {
     width: 100%;
+    background-color: var(--eco-bg-dark);
+    position: relative; /* ĐIỂM NEO TỐI THƯỢNG CHO MOBILE */
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 1px solid #333;
 }
-.menu-nav .menu-item{
-    text-align: center;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+
+.eco-nav-container {
+    width: 95%;
+    max-width: 1300px;
+    margin: 0 auto;
 }
-.menu-item.dropdown:hover > .dropdown-menu {
-    display: block;
+
+/* ==================== DANH SÁCH MENU CHÍNH ==================== */
+.eco-nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
     margin: 0;
+    padding: 8px 0; 
+    gap: 15px; 
 }
 
-.menu-item.changcoler:hover > .menu-link.active,
-.menu-item.dropdown:hover > .menu-link {
-    color: rgb(255, 80, 4);
+/* NÚT CHA LÀM ĐIỂM NEO CHO PC */
+.eco-nav-item {
+    position: relative; /* Trên PC, Submenu sẽ neo vào nút này */
 }
 
-.dropdown-menu {
-    background-color: #343a40; 
-    border: none; 
+/* THIẾT KẾ NÚT "VIÊN THUỐC" (PILL SHAPE) */
+.eco-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--eco-text-light) !important;
+    font-size: 16px !important; 
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 10px 22px;
+    border-radius: 50px; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid transparent;
 }
-.menu-dropitem{
-    color: white !important;
-    font-size: 1.6rem !important; 
 
+.eco-nav-link i { font-size: 18px !important; opacity: 0.8; transition: opacity 0.3s; }
+.arrow-down { font-size: 14px !important; margin-left: 4px; transition: transform 0.3s; }
+
+/* HOVER MENU CHÍNH */
+.eco-nav-link:hover {
+    background-color: var(--eco-primary) !important; 
+    box-shadow: 0 4px 12px rgba(10, 92, 54, 0.4);
+    transform: translateY(-2px);
 }
-.menu-dropitem:hover {
-    background-color: #6c757d;
+.eco-nav-link:hover i { opacity: 1; }
+
+/* NÚT KHUYẾN MÃI & ADMIN */
+.highlight-sale { color: var(--eco-sale) !important; border-color: rgba(255, 193, 7, 0.3); }
+.highlight-sale i { color: var(--eco-sale) !important; opacity: 1; }
+.highlight-sale:hover { background-color: rgba(255, 193, 7, 0.15) !important; border-color: var(--eco-sale); color: var(--eco-sale) !important; }
+@keyframes pulseGift { 0% { transform: scale(1); } 50% { transform: scale(1.2) rotate(-10deg); } 100% { transform: scale(1); } }
+.pulse-anim { animation: pulseGift 1.5s infinite; }
+.btn-admin-nav { background-color: #d32f2f !important; }
+.btn-admin-nav:hover { background-color: #f44336 !important; }
+
+/* ==================== SUBMENU (HOẠT ĐỘNG CHUẨN PC) ==================== */
+.eco-submenu {
+    position: absolute;
+    top: 100%; 
+    left: 50%; /* Canh giữa so với CHÍNH NÚT DANH MỤC */
+    transform: translateX(-50%) translateY(20px);
+    width: max-content; 
+    min-width: 200px; 
+    background-color: #ffffff !important; 
+    list-style: none;
+    margin: 0;
+    padding: 10px; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eeeeee;
+    
+    /* Animation hiện mượt */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
 }
-/* tablet */
-@media (max-width: 992px) { 
-    .menu-nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .menu-link > i {
-        display: none;
-    }
-    .menu-item {
-        flex: 0 0 auto;
-    }
-    .menu-item {
-        padding: 0.5rem;
-    }
+
+.eco-submenu::before { content: ''; position: absolute; top: -20px; left: 0; width: 100%; height: 20px; background: transparent; }
+
+/* KÍCH HOẠT SUBMENU */
+.eco-has-dropdown.is-open .eco-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px); /* Nhảy lên mượt mà */
 }
-/* phone */
-@media (max-width: 645px) { 
-    .menu-nav {
+
+/* Xoay mũi tên */
+.eco-has-dropdown.is-open .arrow-down { transform: rotate(180deg); }
+
+/* ITEM TRONG SUBMENU (CĂN TRÁI TRÊN PC) */
+.eco-submenu-item { margin-bottom: 4px; }
+.eco-submenu-item:last-child { margin-bottom: 0; }
+
+.eco-submenu-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ép căn trái trên PC */
+    color: #333333 !important; 
+    font-size: 16px !important; 
+    font-weight: 600;
+    text-decoration: none !important;
+    padding: 12px 18px; 
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap; 
+}
+
+.eco-submenu-link i { color: var(--eco-primary); width: 30px; text-align: left; font-size: 18px !important; }
+.eco-submenu-link:hover { background-color: #f4f9f7 !important; color: var(--eco-primary) !important; padding-left: 22px; }
+
+/* ==================== RESPONSIVE TỐI ƯU CHO MOBILE ==================== */
+@media (max-width: 1200px) {
+    .eco-nav-link { font-size: 15px !important; padding: 8px 16px; }
+}
+
+@media (max-width: 768px) {
+    .eco-nav-container { width: 100%; padding: 0; }
+
+    /* MENU VUỐT NGANG */
+    .eco-nav-list {
         justify-content: flex-start;
+        overflow-x: auto; 
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; 
+        padding: 10px 15px;
+        gap: 10px;
     }
-}
+    .eco-nav-list::-webkit-scrollbar { display: none; }
 
+    /* !!! VŨ KHÍ BÍ MẬT: Phá vỡ cấu trúc trên Mobile để Submenu xổ ra được !!! */
+    .eco-nav-item {
+        flex: 0 0 auto; 
+        position: static !important; /* Gỡ bỏ "Điểm neo" của nút. Bắt Submenu phải lấy thanh Wrapper đen làm chuẩn */
+    }
+
+    .eco-nav-link {
+        font-size: 14px !important; 
+        padding: 10px 18px;
+        background-color: rgba(255, 255, 255, 0.08); 
+        border-radius: 30px; 
+    }
+    .eco-nav-link:hover { transform: none; }
+
+    /* GIAO DIỆN SUBMENU ĐIỆN THOẠI (FULL MÀN, CĂN GIỮA) */
+    .eco-submenu {
+        top: 100%; 
+        left: 0 !important; /* Bắt đầu từ mép trái màn hình đt */
+        width: 100% !important; /* Rộng 100% bằng màn hình đt */
+        transform: translateY(15px); /* Bỏ translateX */
+        min-width: unset;
+        border-radius: 0 0 15px 15px; 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
+        padding: 15px;
+    }
+    
+    .eco-has-dropdown.is-open .eco-submenu {
+        transform: translateY(0); /* Rơi thẳng xuống mượt mà */
+    }
+
+    /* ĐÚNG YÊU CẦU: CHỮ VÀ ICON BÊN TRONG CĂN GIỮA TRÊN MOBILE */
+    .eco-submenu-link {
+        font-size: 16px !important; 
+        padding: 15px 10px;
+        justify-content: center !important; /* ÉP CĂN GIỮA TEXT */
+    }
+    
+    .eco-submenu-link i {
+        width: auto; /* Bỏ set cứng 30px để icon sát với chữ */
+        margin-right: 10px; /* Thêm tí khoảng cách với chữ cho đẹp */
+        text-align: center;
+    }
+    
+    .eco-submenu-link:hover { padding-left: 10px; transform: scale(1.02); } /* Đổi hiệu ứng hover trên điện thoại cho hợp lý khi căn giữa */
+}

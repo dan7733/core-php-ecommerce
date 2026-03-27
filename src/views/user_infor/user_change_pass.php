@@ -1,195 +1,86 @@
+<div id="toast-container"></div>
 <?php
 if (isset($Pass_txtErro) && !empty($Pass_txtErro)) {
-    echo "<script>alert('$Pass_txtErro');</script>";
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { showToast('{$Pass_txtErro}', 'info'); });</script>";
 }
 ?>
 
 <style>
-/* ---------- Form Đổi Mật Khẩu - Thiết kế đẹp, hiện đại, responsive ---------- */
-
-.form-change-pass {
-    min-height: calc(100vh - 140px);
-    display: flex;
-    align-items: center;
-    padding: 20px 15px;
-    background-color: #f5f8fb;
-}
-
-.card-pass {
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(33, 130, 130, 0.15);
-    overflow: hidden;
-    border: 1px solid rgba(33, 130, 130, 0.1);
-    max-width: 550px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.card-pass .doipass {
-    background: linear-gradient(135deg, #218282, #1a6767);
-    color: white;
-    text-align: center;
-    padding: 25px 20px;
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.card-body {
-    padding: 40px 35px;
-}
-
-.form-pass {
-    margin-bottom: 30px;
-}
-
-.form-pass label {
-    display: block;
-    font-weight: 600;
-    color: #218282;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.form-pass input.formcontrol {
-    width: 100%;
-    padding: 14px 18px;
-    font-size: 1.1rem;
-    border: 2px solid #d0e0e0;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background-color: #f8fcfc;
-    color: #2c3e50;
-}
-
-.form-pass input.formcontrol:focus {
-    outline: none;
-    border-color: #218282;
-    background-color: white;
-    box-shadow: 0 0 0 4px rgba(33, 130, 130, 0.15);
-}
-
-.form-pass input.formcontrol::placeholder {
-    color: #aabbbd;
-    font-style: italic;
-}
-
-/* Hiệu ứng khi mật khẩu không khớp (nếu cần JS bổ sung sau) */
-.form-pass input.invalid {
-    border-color: #dc3545;
-    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.2);
-}
-
-/* Nút submit */
-.btn-change-pass {
-    background: linear-gradient(135deg, #218282, #1a6767);
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 14px 30px;
-    border: none;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 320px;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(33, 130, 130, 0.25);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.btn-change-pass:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(33, 130, 130, 0.35);
-    background: linear-gradient(135deg, #1a6767, #155555);
-}
-
-.btn-change-pass:active {
-    transform: translateY(0);
-}
-
-/* Responsive cho mobile */
-@media (max-width: 767.98px) {
-    .card-pass .doipass {
-        font-size: 1.6rem;
-        padding: 20px 15px;
-    }
-
-    .card-body {
-        padding: 30px 25px;
-    }
-
-    .form-pass input.formcontrol {
-        padding: 12px 16px;
-        font-size: 1rem;
-    }
-
-    .btn-change-pass {
-        padding: 12px 25px;
-        font-size: 1.05rem;
-        max-width: 100%;
-    }
-
-    .form-change-pass {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-pass {
-        border-radius: 15px;
-    }
-
-    .card-body {
-        padding: 25px 20px;
-    }
-
-    .form-pass label {
-        font-size: 1rem;
-    }
-}
+    :root { --deep-green: #0a5c36; --dark-grey: #222; }
+    .form-dashboard-wrapper { padding: 20px; animation: fadeUp 0.5s ease-out forwards; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .profile-card { background: #fff; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #eaeaea; max-width: 600px; margin: 0 auto; overflow: hidden; }
+    .profile-card-header { background-color: #f9f9f9; padding: 25px 30px; border-bottom: 2px solid #eee; display: flex; align-items: center; gap: 15px; }
+    .profile-card-header i { font-size: 2.2rem; color: var(--dark-grey); }
+    .profile-card-header h4 { margin: 0; font-size: 1.8rem; font-weight: 800; color: #222; text-transform: uppercase; }
+    .profile-card-body { padding: 35px 30px; }
+    .modern-form-group { margin-bottom: 25px; }
+    .modern-form-group label { display: block; font-size: 1.2rem; font-weight: 700; color: #555; margin-bottom: 8px; }
+    .modern-input { width: 100%; padding: 15px 18px; font-size: 1.3rem; border: 2px solid #ddd; border-radius: 10px; transition: 0.3s; outline: none; color: #222; }
+    .modern-input:focus { border-color: var(--dark-grey); box-shadow: 0 0 0 4px rgba(34, 34, 34, 0.1); }
+    .modern-input.error { border-color: #e74c3c; box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1); }
+    .btn-save-profile { background: var(--dark-grey); color: #fff; border: none; padding: 16px 30px; font-size: 1.4rem; font-weight: bold; border-radius: 10px; width: 100%; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+    .btn-save-profile:hover { background: #000; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(34, 34, 34, 0.3); }
+    
+    #toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .custom-toast { min-width: 320px; background: #fff; padding: 18px 25px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 15px; border-left: 6px solid var(--dark-grey); transform: translateX(120%); transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #333;}
+    .custom-toast.show { transform: translateX(0); }
+    .custom-toast i { font-size: 1.8rem; color: var(--dark-grey); }
+    
+    @media (max-width: 768px) { .profile-card-header { padding: 20px; } .profile-card-header h4 { font-size: 1.5rem; } .profile-card-body { padding: 25px 20px; } .modern-input { font-size: 1.2rem; padding: 12px; } .btn-save-profile { font-size: 1.3rem; } }
 </style>
 
-<div class="form-change-pass row justify-content-center">
-    <div class="col-md-6 col-12">
-        <div class="card-pass mt-5">
-            <h4 class="doipass">Đổi mật khẩu</h4>
-            <div class="card-body">
-                <form id="changepassForm" method="post">
-                    <div class="form-pass">
-                        <label for="newpass">Mật khẩu mới</label>
-                        <input 
-                            type="password" 
-                            class="formcontrol" 
-                            name="passmoi" 
-                            id="newpass" 
-                            placeholder="Nhập mật khẩu mới (tối thiểu 8 ký tự)" 
-                            required 
-                            minlength="8">
-                    </div>
-
-                    <div class="form-pass">
-                        <label for="confirmpass">Xác nhận mật khẩu mới</label>
-                        <input 
-                            type="password" 
-                            class="formcontrol" 
-                            name="xacnhanpassmoi" 
-                            id="confirmpass" 
-                            placeholder="Nhập lại mật khẩu mới" 
-                            required 
-                            minlength="8">
-                    </div>
-
-                    <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" name="change_pass-btn" class="btn-change-pass btn btn-primary">
-                            Đổi mật khẩu
-                        </button>
-                    </div>
-                </form>
-            </div>
+<div class="form-dashboard-wrapper">
+    <div class="profile-card">
+        <div class="profile-card-header">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Bảo mật Mật khẩu</h4>
+        </div>
+        <div class="profile-card-body">
+            <form method="post" onsubmit="return validatePass()">
+                <div class="modern-form-group">
+                    <label for="newpass">Mật khẩu mới</label>
+                    <input type="password" name="passmoi" class="modern-input" id="newpass" placeholder="Tối thiểu 8 ký tự" required minlength="8">
+                </div>
+                <div class="modern-form-group">
+                    <label for="confirmpass">Xác nhận lại mật khẩu</label>
+                    <input type="password" name="xacnhanpassmoi" class="modern-input" id="confirmpass" placeholder="Nhập lại mật khẩu mới" required minlength="8">
+                    <small id="passError" style="color: #e74c3c; display: none; margin-top: 8px; font-weight: bold; font-size: 1.1rem;"><i class="fas fa-exclamation-triangle"></i> Mật khẩu xác nhận không khớp!</small>
+                </div>
+                <button type="submit" name="change_pass-btn" class="btn-save-profile">
+                    <i class="fas fa-lock"></i> ĐỔI MẬT KHẨU
+                </button>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    // Kiểm tra mật khẩu khớp nhau ngay lúc submit
+    function validatePass() {
+        const pass = document.getElementById('newpass').value;
+        const confirm = document.getElementById('confirmpass').value;
+        const error = document.getElementById('passError');
+        const confirmInput = document.getElementById('confirmpass');
+        
+        if (pass !== confirm) {
+            error.style.display = 'block';
+            confirmInput.classList.add('error');
+            return false;
+        }
+        error.style.display = 'none';
+        confirmInput.classList.remove('error');
+        return true;
+    }
+
+    function showToast(msg, type) {
+        const c = document.getElementById('toast-container');
+        if(!c) return;
+        const t = document.createElement('div');
+        t.className = `custom-toast ${type}`;
+        t.innerHTML = `<i class="fas fa-info-circle"></i> <span>${msg}</span>`;
+        c.appendChild(t);
+        setTimeout(() => t.classList.add('show'), 10);
+        setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 3000);
+    }
+</script>

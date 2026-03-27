@@ -1,118 +1,76 @@
-.slider-container{
+/* ==================== HERO MEGA SECTION ==================== */
+.hero-mega-section {
+    margin: 20px auto 50px auto;
     display: flex;
-}
-.slider-content-1{
-    width: 75%;
-}
-.slider-content-2{
-    width: 25%;
-}
-.slider-1{
-    padding: 5px;
-    height: 30rem;
-}
-.slider-mySlides1 > img{
-    height: 30rem !important;
+    flex-direction: column;
+    gap: 15px;
     width: 100%;
-}
-.slider-2{
-    height: 15rem;
-    padding: 0.5rem;
-    right: 0;
-}
-.slider-3{
-    height: 15rem;
-    padding: 0.5rem;
-    right: 0;
-}
-.slider-mySlides2 > img, .slider-3 > img {
-    height: 14rem !important;
-    width: 100%;
-}
-.slider-content-2 div img{
-    width: 100%;
-    height: 100%;
 }
 
-.slider-mySlides1,
-.slider-mySlides2 {
+/* KHỐI TRÊN: SLIDER CHÍNH (SỬ DỤNG TỶ LỆ, KHÔNG DÙNG CHIỀU CAO CỐ ĐỊNH) */
+.hero-slider-main {
     position: relative;
-    display: none;
-    text-align: center;
-}
-
-.slider-mySlides1 img,
-.slider-mySlides2 img {
     width: 100%;
-    height: auto;
-}
-.prev, .next {
-    position: absolute;
-    opacity: 0;
-    top: 50%;
-    height: 5rem;
-    width: 3rem;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.2);
-    color: var(--pure-white);
-    padding: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.prev > i, .next > i {
-    font-size: 1.6rem !important;
-}
-.slider-mySlides1:hover .prev{
-    opacity: 1;
-}
-.slider-mySlides1:hover .next {
-    opacity: 1;
-}
-.slider-mySlides2:hover .prev{
-    opacity: 1;
-}
-.slider-mySlides2:hover .next{
-    opacity: 1;
-}
-.prev:hover,
-.next:hover {
-    background-color: var(--pure-white);
-    color: var(--deep-green);
-}
-.prev {
-    left: 1rem;
+    aspect-ratio: 3.2 / 1; /* Tỷ lệ chuẩn để ảnh trải ngang đẹp trên PC */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background-color: #fcfcfc; 
 }
 
-.next {
-    right: 1rem;
+.slide-item {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in-out, visibility 0.6s;
+}
+.slide-item.active { opacity: 1; visibility: visible; }
+
+/* ÉP ẢNH LẤP ĐẦY TOÀN BỘ SLIDER KHÔNG MÉO */
+.slide-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; 
+    background-color: #fff; 
 }
 
-.prev i,
-.next i {
-    font-size: 1rem;
+/* NÚT ĐIỀU HƯỚNG SLIDER */
+.slider-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9); color: var(--deep-green);
+    border: none; width: 50px; height: 50px; border-radius: 50%;
+    font-size: 1.8rem; cursor: pointer; z-index: 10; opacity: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: all 0.3s ease;
 }
-/* CSS cho giao diện mobile */
-@media screen and (max-width: 992px) {
-    .slider-container {
-        flex-direction: column;
-    }
-    .slider-content-1,
-    .slider-content-2 {
-        width: 100%;
-    }
-    .slider-mySlides1 > img{
-        height: 100% !important;
-        width: 100%;
-    }
-    .slider-1,
-    .slider-2,
-    .slider-3 {
-        height: auto;
-    }
-    .slider-2,
-    .slider-3 {
-        width: 50%;
-        float: left;
-    }
+.hero-slider-main:hover .slider-btn { opacity: 1; }
+.slider-btn:hover { background: var(--deep-green); color: #fff; transform: translateY(-50%) scale(1.1); }
+.slider-btn.prev { left: 25px; } .slider-btn.next { right: 25px; }
+
+/* CHẤM ĐIỀU HƯỚNG */
+.slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
+.dot { width: 14px; height: 14px; background-color: rgba(255, 255, 255, 0.6); border: 1px solid #ddd; border-radius: 50%; cursor: pointer; transition: all 0.3s; }
+.dot.active, .dot:hover { background-color: var(--deep-green); border-color: var(--deep-green); width: 40px; border-radius: 10px; }
+
+/* KHỐI DƯỚI: 4 BANNER PHỤ */
+.hero-sub-banners { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.banner-static { width: 100%; aspect-ratio: 2.5 / 1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.banner-static img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.banner-static:hover img { transform: scale(1.05); }
+
+/* ==================== RESPONSIVE TỐI ƯU ==================== */
+@media (max-width: 1200px) {
+    .hero-slider-main { aspect-ratio: 10 / 4; }
+}
+
+@media (max-width: 992px) {
+    .hero-sub-banners { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* Lưới 2x2 trên Tablet */
+}
+
+@media (max-width: 768px) {
+    .hero-mega-section { margin: 15px auto 30px auto; }
+    
+    /* TRÊN ĐIỆN THOẠI, SLIDER CAO LÊN ĐỂ ẢNH RÕ HƠN */
+    .hero-slider-main { aspect-ratio: 16 / 7; border-radius: 12px; } 
+    .slider-btn { width: 40px; height: 40px; font-size: 1.4rem; opacity: 1; }
+    
+    /* VẪN HIỆN BANNER PHỤ DẠNG 2 CỘT GỌN GÀNG TRÊN MOBILE */
+    .hero-sub-banners { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;} 
+    .banner-static { aspect-ratio: 2 / 1; border-radius: 8px;}
 }

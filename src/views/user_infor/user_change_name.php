@@ -1,191 +1,67 @@
+<div id="toast-container"></div>
 <?php
 if (isset($Name_txtErro) && !empty($Name_txtErro)) {
-    echo "<script>alert('$Name_txtErro');</script>";
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { showToast('{$Name_txtErro}', 'info'); });</script>";
 }
 ?>
 
 <style>
-/* ---------- Form Đổi Họ và Tên - Đồng bộ style với các form trước ---------- */
-
-.form-change-name {
-    min-height: calc(100vh - 140px);
-    display: flex;
-    align-items: center;
-    padding: 20px 15px;
-    background-color: #f5f8fb;
-}
-
-.card-name {
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(33, 130, 130, 0.15);
-    overflow: hidden;
-    border: 1px solid rgba(33, 130, 130, 0.1);
-    max-width: 550px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.card-name h4 {
-    background: linear-gradient(135deg, #218282, #1a6767);
-    color: white;
-    text-align: center;
-    padding: 25px 20px;
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.card-body {
-    padding: 40px 35px;
-}
-
-.form-name {
-    margin-bottom: 30px;
-}
-
-.form-name label {
-    display: block;
-    font-weight: 600;
-    color: #218282;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.form-name input.formcontrol {
-    width: 100%;
-    padding: 14px 18px;
-    font-size: 1.1rem;
-    border: 2px solid #d0e0e0;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background-color: #f8fcfc;
-    color: #2c3e50;
-}
-
-.form-name input.formcontrol:focus {
-    outline: none;
-    border-color: #218282;
-    background-color: white;
-    box-shadow: 0 0 0 4px rgba(33, 130, 130, 0.15);
-}
-
-.form-name input.formcontrol::placeholder {
-    color: #aabbbd;
-    font-style: italic;
-}
-
-/* Nút submit */
-.btn-change-name {
-    background: linear-gradient(135deg, #218282, #1a6767);
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 14px 30px;
-    border: none;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 320px;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(33, 130, 130, 0.25);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.btn-change-name:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(33, 130, 130, 0.35);
-    background: linear-gradient(135deg, #1a6767, #155555);
-}
-
-.btn-change-name:active {
-    transform: translateY(0);
-}
-
-/* Responsive cho mobile */
-@media (max-width: 767.98px) {
-    .card-name h4 {
-        font-size: 1.6rem;
-        padding: 20px 15px;
-    }
-
-    .card-body {
-        padding: 30px 25px;
-    }
-
-    .form-name input.formcontrol {
-        padding: 12px 16px;
-        font-size: 1rem;
-    }
-
-    .btn-change-name {
-        padding: 12px 25px;
-        font-size: 1.05rem;
-        max-width: 100%;
-    }
-
-    .form-change-name {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-name {
-        border-radius: 15px;
-    }
-
-    .card-body {
-        padding: 25px 20px;
-    }
-
-    .form-name label {
-        font-size: 1rem;
-    }
-}
+    :root { --deep-green: #0a5c36; --warning-orange: #ff9800; }
+    .form-dashboard-wrapper { padding: 20px; animation: fadeUp 0.5s ease-out forwards; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .profile-card { background: #fff; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #eaeaea; max-width: 600px; margin: 0 auto; overflow: hidden; }
+    .profile-card-header { background-color: #fffaf0; padding: 25px 30px; border-bottom: 2px solid #fff3e0; display: flex; align-items: center; gap: 15px; }
+    .profile-card-header i { font-size: 2.2rem; color: var(--warning-orange); }
+    .profile-card-header h4 { margin: 0; font-size: 1.8rem; font-weight: 800; color: #222; text-transform: uppercase; }
+    .profile-card-body { padding: 35px 30px; }
+    .modern-form-group { margin-bottom: 25px; }
+    .modern-form-group label { display: block; font-size: 1.2rem; font-weight: 700; color: #555; margin-bottom: 8px; }
+    .modern-input { width: 100%; padding: 15px 18px; font-size: 1.3rem; border: 2px solid #ddd; border-radius: 10px; transition: 0.3s; outline: none; color: #222; }
+    .modern-input:focus { border-color: var(--warning-orange); box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.1); }
+    .btn-save-profile { background: var(--warning-orange); color: #fff; border: none; padding: 16px 30px; font-size: 1.4rem; font-weight: bold; border-radius: 10px; width: 100%; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+    .btn-save-profile:hover { background: #e68a00; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3); }
+    
+    #toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .custom-toast { min-width: 320px; background: #fff; padding: 18px 25px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 15px; border-left: 6px solid var(--warning-orange); transform: translateX(120%); transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #333;}
+    .custom-toast.show { transform: translateX(0); }
+    .custom-toast i { font-size: 1.8rem; color: var(--warning-orange); }
+    
+    @media (max-width: 768px) { .profile-card-header { padding: 20px; } .profile-card-header h4 { font-size: 1.5rem; } .profile-card-body { padding: 25px 20px; } .modern-input { font-size: 1.2rem; padding: 12px; } .btn-save-profile { font-size: 1.3rem; } }
 </style>
 
-<div class="form-change-name row justify-content-center">
-    <div class="col-md-6 col-12">
-        <div class="card-name mt-5">
-            <h4>Đổi Họ và Tên</h4>
-            <div class="card-body">
-                <form id="changenameForm" method="post">
-                    <div class="form-name">
-                        <label for="currentname">Họ mới</label>
-                        <input 
-                            type="text" 
-                            name="homoi" 
-                            class="formcontrol" 
-                            id="currentname" 
-                            placeholder="Nhập họ mới (ví dụ: Nguyễn)" 
-                            required 
-                            pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ\s]+"
-                            title="Họ chỉ chứa chữ cái và khoảng trắng">
-                    </div>
-
-                    <div class="form-name">
-                        <label for="newname">Tên mới</label>
-                        <input 
-                            type="text" 
-                            name="tenmoi" 
-                            class="formcontrol" 
-                            id="newname" 
-                            placeholder="Nhập tên mới (ví dụ: Văn A)" 
-                            required 
-                            pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ\s]+"
-                            title="Tên chỉ chứa chữ cái và khoảng trắng">
-                    </div>
-
-                    <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" name="change-name-btn" class="btn-change-name btn btn-primary">
-                            Đổi Họ và Tên
-                        </button>
-                    </div>
-                </form>
-            </div>
+<div class="form-dashboard-wrapper">
+    <div class="profile-card">
+        <div class="profile-card-header">
+            <i class="fas fa-id-badge"></i>
+            <h4>Cập nhật Họ và Tên</h4>
+        </div>
+        <div class="profile-card-body">
+            <form method="post">
+                <div class="modern-form-group">
+                    <label for="currentname">Họ của bạn</label>
+                    <input type="text" name="homoi" class="modern-input" id="currentname" placeholder="Ví dụ: Nguyễn" required pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ\s]+" title="Chỉ chứa chữ cái">
+                </div>
+                <div class="modern-form-group">
+                    <label for="newname">Tên của bạn</label>
+                    <input type="text" name="tenmoi" class="modern-input" id="newname" placeholder="Ví dụ: Văn A" required pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪỬỮỰỲỴÝỶỸ\s]+" title="Chỉ chứa chữ cái">
+                </div>
+                <button type="submit" name="change-name-btn" class="btn-save-profile">
+                    <i class="fas fa-save"></i> LƯU THAY ĐỔI
+                </button>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    function showToast(msg, type) {
+        const c = document.getElementById('toast-container');
+        if(!c) return;
+        const t = document.createElement('div');
+        t.className = `custom-toast ${type}`;
+        t.innerHTML = `<i class="fas fa-info-circle"></i> <span>${msg}</span>`;
+        c.appendChild(t);
+        setTimeout(() => t.classList.add('show'), 10);
+        setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 3000);
+    }
+</script>

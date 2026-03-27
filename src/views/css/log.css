@@ -1,62 +1,305 @@
-.name {
-    display: flex;
+/* ==================== BIẾN MÀU CỤC BỘ ==================== */
+:root {
+    --auth-login-primary: rgb(11, 124, 124);     /* Xanh mòng két đặc trưng */
+    --auth-login-hover: rgb(15, 145, 145);      /* Xanh sáng hơn khi hover */
+    --auth-login-bg: #f4f7f6;
 }
-.hinhdau{
-    width: 50%;
-    margin-top: 80px;
-    margin-bottom: 80px;
+
+/* ==================== LAYOUT TỔNG THỂ ==================== */
+body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--auth-login-bg);
 }
-.text-center{
-    font-size: 50px;
-    margin-top: -150px;
-    margin-bottom: 50px;
-    color: rgb(11, 124, 124);
-}
-input.custom-input {
-    background-color: rgb(11, 124, 124);
-    font-weight: 500;
-    padding: 10px 200px 10px 10px;
-    font-size: 15px;
-    border-radius: 5px;
-}
-input.custom-input{
-    color: white !important;
-}
-input.custom-input::placeholder {
-    color: white !important;
-}
-.hinhcuoi{
+
+.auth-login-wrapper {
     width: 100%;
-}
-.form-check input {
-    width: 20px; 
-    height: 18px; 
-}
-.col .form-check-label { 
-    font-size: 15px;
-    margin-left: 20px;
-}
-.text-decoration-none{ 
-    font-size: 15px;
-    margin-left: 75px;
+    min-height: calc(100vh - 100px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px 20px;
+    background-color: var(--auth-login-bg);
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.thanhlogin button {
-    background-color: rgb(11, 124, 124);
+.auth-login-card {
+    display: flex;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(11, 124, 124, 0.15);
+    max-width: 1000px; /* Nới rộng khung để vừa chữ to */
+    width: 100%;
+    z-index: 10;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
+}
+
+/* ==================== CỘT TRÁI (HÌNH ẢNH TRÊN PC) ==================== */
+.auth-login-image-side {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-right: 2px dashed #f0f0f0;
+}
+
+.auth-login-logo {
+    max-width: 85%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.auth-login-image-side:hover .auth-login-logo { 
+    transform: scale(1.08); 
+}
+
+/* ==================== CỘT PHẢI (FORM ĐĂNG NHẬP) ==================== */
+.auth-login-form-side {
+    flex: 1.2;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.auth-login-form {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.auth-login-title {
+    font-size: 3.2rem; /* CHỮ KHỔNG LỒ */
+    color: var(--auth-login-primary);
+    text-align: center;
+    margin: 0 0 30px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==================== THÔNG BÁO LỖI (ALERT BOX) ==================== */
+.auth-login-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-size: 1.3rem; /* Chữ thông báo to rõ */
+    font-weight: bold;
+}
+
+.auth-login-alert-error {
+    background-color: #fcebeb;
+    color: #e74c3c;
+    border: 2px solid #fad2d2;
+}
+
+.auth-login-alert-error i { font-size: 1.8rem; }
+
+/* Hiệu ứng rung nhẹ khi báo lỗi */
+.shake-anim { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes shake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+    40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* ==================== INPUT NHẬP LIỆU ==================== */
+.auth-login-input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.auth-login-icon-left {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.4rem; /* Icon bự ra */
+    z-index: 2;
+}
+
+.auth-login-icon-right {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.4rem; /* Icon bự ra */
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-login-icon-right:hover { color: #fff; }
+
+.auth-login-input {
+    width: 100%;
+    background-color: var(--auth-login-primary);
+    color: #fff !important;
+    padding: 18px 55px; /* Mở rộng padding để ô input bự ra */
+    font-size: 1.3rem; /* FONT SIZE TO RÕ */
     font-weight: 500;
-    padding: 10px 180px 10px 10px; 
-    font-size: 15px;
-    color: white !important; /* Thay đổi màu chữ thành màu trắng */
-    text-indent: calc( 175px); /* Điều chỉnh giá trị này để căn giữa chữ */
-    border-radius: 5px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.namngangdangki{
-    font-size: 15px;
-    margin-top: 10px;
+.auth-login-input::placeholder { color: rgba(255, 255, 255, 0.75) !important; }
+.auth-login-input:focus { 
+    background-color: var(--auth-login-hover); 
+    box-shadow: 0 0 0 4px rgba(11, 124, 124, 0.25); 
+    transform: translateY(-2px);
 }
-input.custom-input:focus {
-    background-color: rgb(11, 124, 124) ; 
-    outline: none ; 
-    color: white;
+
+/* ==================== TÙY CHỌN (GHI NHỚ & QUÊN MK) ==================== */
+.auth-login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    font-size: 1.2rem; /* FONT SIZE TO RÕ */
+}
+
+.auth-login-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}
+
+.auth-login-checkbox { width: 20px; height: 20px; accent-color: var(--auth-login-primary); cursor: pointer; margin: 0;}
+.auth-login-forgot-link { color: var(--auth-login-primary); text-decoration: none; font-weight: 700; transition: 0.3s; }
+.auth-login-forgot-link:hover { color: var(--auth-login-hover); text-decoration: underline; }
+
+/* ==================== NÚT ĐĂNG NHẬP ==================== */
+.auth-login-submit-btn {
+    width: 100%;
+    background-color: var(--auth-login-primary);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.6rem; /* FONT NÚT BẤM KHỔNG LỒ */
+    padding: 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(11, 124, 124, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.auth-login-submit-btn:hover { 
+    background-color: var(--auth-login-hover); 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px rgba(11, 124, 124, 0.4); 
+}
+
+/* ==================== ĐĂNG KÝ LINK ==================== */
+.auth-login-redirect {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.3rem; /* FONT TO RÕ */
+    color: #666;
+    font-weight: 500;
+}
+.auth-login-redirect a {
+    color: var(--auth-login-primary);
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.3s;
+    margin-left: 5px;
+}
+.auth-login-redirect a:hover { color: var(--auth-login-hover); text-decoration: underline; }
+
+/* ==================== HÌNH SÓNG VÀ ANIMATIONS ==================== */
+.auth-login-wave-bottom { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 1; opacity: 0.8; pointer-events: none; }
+.fade-up { opacity: 0; transform: translateY(40px); animation: fadeUpAnim 0.7s ease-out forwards; }
+@keyframes fadeUpAnim { to { opacity: 1; transform: translateY(0); } }
+
+/* Hiệu ứng bóng nước khi click nút */
+.auth-login-ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: authRipple 0.6s linear; background: rgba(255,255,255,0.4); pointer-events: none; }
+@keyframes authRipple { to { transform: scale(4); opacity: 0; } }
+
+/* ==================== RESPONSIVE TỐI ƯU (MOBILE VÀ TABLET) ==================== */
+
+/* Khi màn hình nhỏ hơn 992px (Tablet và Mobile) */
+@media (max-width: 992px) {
+    .auth-login-card { 
+        flex-direction: column; /* Chuyển thành 1 cột dọc */
+        max-width: 550px;       /* Thu gọn chiều rộng thẻ */
+    }
+    
+    /* ẨN HOÀN TOÀN CỘT HÌNH ẢNH BÊN TRÁI ĐỂ NHƯỜNG CHỖ CHO FORM */
+    .auth-login-image-side { 
+        display: none !important; 
+    }
+    
+    /* Form đăng nhập chiếm trọn không gian */
+    .auth-login-form-side { 
+        padding: 50px 40px; 
+    }
+    
+    .auth-login-title { 
+        font-size: 2.8rem; 
+    }
+}
+
+/* Khi màn hình nhỏ hơn 768px (Điện thoại) */
+@media (max-width: 768px) {
+    .auth-login-wrapper {
+        padding: 15px; /* Giảm khoảng cách lề */
+    }
+    
+    .auth-login-card { 
+        max-width: 100%; 
+        border-radius: 16px; 
+    }
+    
+    .auth-login-form-side { 
+        padding: 40px 25px; 
+    }
+    
+    .auth-login-title { 
+        font-size: 2.5rem; 
+        margin-bottom: 25px;
+    }
+    
+    /* Ẩn luôn sóng trang trí ở dưới cùng cho màn hình đỡ rối */
+    .auth-login-wave-bottom { 
+        display: none !important; 
+    }
+    
+    /* Tối ưu lại nút và ô input cho vừa ngón tay nhưng vẫn to rõ */
+    .auth-login-submit-btn { 
+        font-size: 1.4rem; 
+        padding: 15px; 
+    }
+    
+    .auth-login-input { 
+        font-size: 1.2rem; 
+        padding: 15px 50px; 
+    }
 }

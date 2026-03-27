@@ -15,7 +15,7 @@ class contentbycategoryController extends BaseController
     {
         $data = [];
 
-        $itemsPerPage = 15;
+        $itemsPerPage = 16;
         $currentPage = isset($_GET['page_number']) ? $_GET['page_number'] : 1;
         $offset = ($currentPage - 1) * $itemsPerPage;
 
@@ -39,7 +39,7 @@ class contentbycategoryController extends BaseController
     public function searchProductlist()
     {
         $data = [];
-        $itemsPerPage = 10;
+        $itemsPerPage = 16;
         if (isset($_GET['keysearch'])) {
             $searchItem = $_GET['keysearch'];
             $data['keysearch'] = $searchItem;
