@@ -1,85 +1,113 @@
-.list_category-container {
-    margin-left: 20%;
-    width: 80%;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* ==================== CATEGORY LIST LAYOUT (PC) ==================== */
+.ad-cat-wrapper {
+    margin-left: var(--sidebar-width, 280px);
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--bg-light, #f4f7f6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-.list_category-bangdulieu {
-    width: 100%;
-    border-collapse: collapse;
+.ad-cat-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--deep-green, #218282);
+    padding: 30px;
+    animation: catFadeIn 0.5s ease-out;
 }
 
-.list_category-bangdulieu th,
-.list_category-bangdulieu td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+@keyframes catFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.list_category-bangdulieu th {
-    background-color: #fff;
-    color: #000;
-    font-size: 15px;
-    font-weight: bold;
+/* ==================== HEADER & ALERTS ==================== */
+.ad-cat-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 25px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;
+}
+.ad-cat-header h1 { font-size: 26px; font-weight: 800; color: var(--deep-green, #218282); text-transform: uppercase; margin: 0; display: flex; align-items: center; gap: 10px; }
+
+.ad-cat-alert { padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 10px; animation: slideDown 0.4s ease-out; }
+.ad-cat-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.ad-cat-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+
+/* ==================== MODERN DATA TABLE ==================== */
+.ad-cat-table-wrapper { width: 100%; border-radius: 8px; }
+
+.ad-cat-table { width: 100%; border-collapse: collapse; text-align: left; }
+.ad-cat-table thead { background-color: #f8fafc; border-radius: 8px 8px 0 0; }
+.ad-cat-table th { padding: 18px 15px; font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; }
+.ad-cat-table td { padding: 18px 15px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; font-size: 15px; color: #334155; }
+.ad-cat-table tbody tr { transition: background-color 0.2s; }
+.ad-cat-table tbody tr:hover { background-color: #f4fcf9; }
+
+/* Các định dạng thành phần trong bảng */
+.ad-cat-id { font-weight: 700; color: #64748b; }
+.ad-cat-name { font-weight: 700; color: #1e293b; font-size: 16px; }
+.ad-cat-badge { background-color: #fffbeb; color: #f59e0b; padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 700; border: 1px solid #fde68a; display: inline-block; }
+.ad-cat-order { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; background-color: #e2e8f0; color: #475569; font-weight: bold; border-radius: 50%; }
+
+/* ==================== NÚT HÀNH ĐỘNG (SỬA/XÓA) ==================== */
+.ad-cat-actions { display: flex; gap: 8px; justify-content: center; }
+.ad-cat-btn { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 8px; color: #fff; text-decoration: none; transition: all 0.2s; font-size: 14px; }
+.ad-cat-btn-edit { background-color: var(--deep-green, #218282); box-shadow: 0 3px 8px rgba(33, 130, 130, 0.2); }
+.ad-cat-btn-edit:hover { background-color: #166161; transform: translateY(-2px); color: #fff;}
+.ad-cat-btn-delete { background-color: var(--brilliant-red, #D11313); box-shadow: 0 3px 8px rgba(209, 19, 19, 0.2); }
+.ad-cat-btn-delete:hover { background-color: #b91010; transform: translateY(-2px); color: #fff;}
+
+/* ==================== PHÂN TRANG ==================== */
+.ad-cat-pagination { margin-top: 30px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.ad-cat-pagination a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; font-weight: 700; color: #475569; text-decoration: none; transition: all 0.3s; background-color: #fff; }
+.ad-cat-pagination a:hover { border-color: var(--deep-green, #218282); color: var(--deep-green, #218282); background-color: #f8fafc; }
+.ad-cat-pagination a.active { background-color: var(--deep-green, #218282); color: #ffffff; border-color: var(--deep-green, #218282); box-shadow: 0 4px 10px rgba(33, 130, 130, 0.25); }
+
+/* ==================== RESPONSIVE CARD TABLE (MOBILE) ==================== */
+@media (max-width: 980px) {
+    /* Trả margin-left về 0 khi Sidebar ẩn đi */
+    .ad-cat-wrapper { margin-left: 0; padding: 80px 20px 30px 20px; }
+    
+    /* ẨN TIÊU ĐỀ BẢNG */
+    .ad-cat-table thead { display: none; }
+    
+    /* BIẾN BẢNG THÀNH DẠNG CARD */
+    .ad-cat-table, .ad-cat-table tbody, .ad-cat-table tr, .ad-cat-table td { display: block; width: 100%; box-sizing: border-box; }
+    .ad-cat-table tr {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        padding: 15px 20px;
+    }
+    
+    .ad-cat-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px dashed #e2e8f0;
+        text-align: right;
+    }
+    
+    .ad-cat-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin-right: 15px;
+        text-align: left;
+    }
+    
+    .ad-cat-table td:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .ad-cat-actions { justify-content: flex-end; }
 }
 
-.list_category-bangdulieu tr:nth-child(odd) {
-    font-size: 15px;
-    background-color: #f2f2f2;
-}
-
-.list_category-bangdulieu tr:hover {
-    background-color: #ddd;
-}
-
-.list_category-bangdulieu tr td,
-.list_category-bangdulieu tr th {
-    text-align: center;
-}
-
-.list_category-bangdulieu tr td a {
-    text-decoration: none;
-}
-
-.list_category-bangdulieu tr td a.edit-btn {
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-.list_category-bangdulieu tr td a.edit-btn i {
-    margin-right: 5px;
-}
-
-.list_category-bangdulieu tr td a.edit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Pagination styles */
-.list_category-pagination {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.list_category-pagination a {
-    color: black;
-    font-size: 15px;
-    padding: 5px 10px;
-    text-decoration: none;
-    margin: 2px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-/* Pagination hover styles */
-.list_category-pagination a:hover {
-    background-color: #f2f2f2;
+@media (max-width: 768px) {
+    .ad-cat-card { padding: 20px 15px; }
+    .ad-cat-header h1 { font-size: 22px; }
 }

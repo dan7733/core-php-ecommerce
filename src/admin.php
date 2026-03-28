@@ -15,25 +15,28 @@ require './controllers/baseController.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./views/admin/css/adminstyles.css">
     <link rel="stylesheet" href="./views/admin/css/header.css">
     <link rel="stylesheet" href="./views/admin/css/admin_infor.css">
-    <link rel="stylesheet" href="./views/admin/css/chitietsanpham.css">
-    <link rel="stylesheet" href="./views/admin/css/gdadmin.css">
-    <link rel="stylesheet" href="./views/admin/css/sitebar.css">
-    <link rel="stylesheet" href="./views/admin/css/them-capnhatchitietsanpham.css">
-    <link rel="stylesheet" href="./views/admin/css/thongtinsanphamthem-cn.css">
-    <link rel="stylesheet" href="./views/admin/css/them-capnhatloai.css">
+    <link rel="stylesheet" href="./views/admin/css/sidebar.css">
+    <link rel="stylesheet" href="./views/admin/css/create_accountadmim.css">
+    <link rel="stylesheet" href="./views/admin/css/insert_category.css">
+    <link rel="stylesheet" href="./views/admin/css/insert_news.css">
+    <link rel="stylesheet" href="./views/admin/css/insert_product.css">
+    <link rel="stylesheet" href="./views/admin/css/insert_promotion.css">
+    <link rel="stylesheet" href="./views/admin/css/list_account.css">
     <link rel="stylesheet" href="./views/admin/css/list_category.css">
     <link rel="stylesheet" href="./views/admin/css/list_detailproduct.css">
-    <link rel="stylesheet" href="./views/admin/css/list_product.css">
-    <link rel="stylesheet" href="./views/admin/css/list_account.css">
-    <link rel="stylesheet" href="./views/admin/css/list_review.css">
     <link rel="stylesheet" href="./views/admin/css/list_news.css">
-    <link rel="stylesheet" href="./views/admin/css/insert_news.css">
-    <link rel="stylesheet" href="./views/admin/css/insert_promotion.css">
+    <link rel="stylesheet" href="./views/admin/css/list_product.css">
     <link rel="stylesheet" href="./views/admin/css/list_promotion.css">
-    <link rel="stylesheet" href="./views/admin/css/create_accountadmim.css">
-    <link rel="stylesheet" href="./views/admin/css/update_account.css">
+    <link rel="stylesheet" href="./views/admin/css/list_review.css">
+    <link rel="stylesheet" href="./views/admin/css/update_account.css"> 
+    <link rel="stylesheet" href="./views/admin/css/update_category.css"> 
+    <link rel="stylesheet" href="./views/admin/css/update_detailproduct.css"> 
+    <link rel="stylesheet" href="./views/admin/css/update_news.css"> 
+    <link rel="stylesheet" href="./views/admin/css/update_product.css"> 
+    <link rel="stylesheet" href="./views/admin/css/update_promotion.css"> 
 </head>
 <body>
     <?php

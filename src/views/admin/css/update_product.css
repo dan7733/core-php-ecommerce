@@ -1,0 +1,258 @@
+/* ==================== UPDATE PRODUCT LAYOUT (PC) ==================== */
+.ad-upd-prod-wrapper {
+    margin-left: var(--sidebar-width, 280px); /* Chừa chỗ cho Sidebar */
+    padding: 20px 40px 40px 40px;
+    min-height: 100vh;
+    background-color: var(--bg-light, #f4f7f6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* --- TOPBAR AVATAR --- */
+.ad-upd-prod-topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.ad-upd-prod-avatar-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 8px 15px;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.ad-upd-prod-bell {
+    font-size: 18px;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.ad-upd-prod-bell:hover { color: var(--deep-green, #218282); }
+.ad-upd-prod-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+/* --- CARD CHÍNH --- */
+.ad-upd-prod-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--deep-green, #218282);
+    padding: 30px 40px;
+    max-width: 900px; 
+    margin: 0 auto;
+    animation: formFadeIn 0.5s ease-out;
+}
+
+@keyframes formFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== HEADER & ALERTS ==================== */
+.ad-upd-prod-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;
+}
+.ad-upd-prod-header h1 { font-size: 24px; font-weight: 800; color: var(--deep-green, #218282); text-transform: uppercase; margin: 0; display: flex; align-items: center; gap: 10px; }
+
+.ad-upd-prod-btn-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 15px; border-radius: 8px;
+    background-color: #f1f5f9; color: #475569;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+    transition: all 0.2s;
+}
+.ad-upd-prod-btn-back:hover { background-color: #e2e8f0; color: #1e293b; }
+
+.ad-upd-prod-alert { padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 10px; animation: slideDown 0.4s ease-out; }
+.ad-upd-prod-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.ad-upd-prod-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+
+/* ==================== FORM CHÍNH ==================== */
+.ad-upd-prod-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+}
+
+.ad-upd-prod-form-group {
+    margin-bottom: 22px;
+}
+
+.ad-upd-prod-form-group label {
+    display: block;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.required { color: var(--brilliant-red, #D11313); }
+
+.ad-upd-prod-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.ad-upd-prod-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+/* Định dạng thẻ Input & Select */
+.ad-upd-prod-input-wrapper input,
+.ad-upd-prod-select {
+    width: 100%;
+    padding: 14px 15px 14px 45px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #1e293b;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background-color: #f8fafc;
+}
+
+/* Tinh chỉnh riêng cho Select để không bị đè icon */
+.ad-upd-prod-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.ad-upd-prod-input-wrapper input:focus,
+.ad-upd-prod-select:focus {
+    outline: none;
+    border-color: var(--deep-green, #218282);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(33, 130, 130, 0.1);
+}
+
+.ad-upd-prod-input-wrapper input:focus + .ad-upd-prod-icon,
+.ad-upd-prod-input-wrapper input:focus ~ .ad-upd-prod-icon,
+.ad-upd-prod-select:focus ~ .ad-upd-prod-icon {
+    color: var(--deep-green, #218282);
+}
+
+/* ==================== KHU VỰC UPLOAD ẢNH ==================== */
+.ad-upd-prod-image-upload {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 8px;
+    background-color: #f8fafc;
+}
+
+.ad-upd-prod-img-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+    flex-shrink: 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-upd-prod-img-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Dùng contain để ảnh SP không bị cắt mất góc */
+}
+
+.ad-upd-prod-upload-action {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ad-upd-prod-btn-upload {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #e2e8f0;
+    color: #475569;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+}
+.ad-upd-prod-btn-upload:hover { background-color: #cbd5e1; color: #1e293b; }
+.ad-upd-prod-upload-action small { color: #94a3b8; font-size: 13px; }
+
+/* ==================== NÚT SUBMIT ==================== */
+.ad-upd-prod-submit-area {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    text-align: right;
+}
+
+.ad-upd-prod-btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--deep-green, #218282);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(33, 130, 130, 0.25);
+}
+
+.ad-upd-prod-btn-submit:hover {
+    background-color: #166161;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(33, 130, 130, 0.35);
+}
+
+/* ==================== RESPONSIVE CHO MOBILE ==================== */
+@media (max-width: 980px) {
+    /* Trả lại không gian Sidebar trên Mobile */
+    .ad-upd-prod-wrapper { margin-left: 0; padding: 70px 15px 30px 15px; }
+}
+
+@media (max-width: 768px) {
+    .ad-upd-prod-card { padding: 25px 20px; }
+    .ad-upd-prod-header h1 { font-size: 22px; }
+    
+    /* Gộp ô thành 1 cột */
+    .ad-upd-prod-grid-2 { grid-template-columns: 1fr; gap: 0; }
+    
+    /* Thu gọn vùng upload ảnh */
+    .ad-upd-prod-image-upload { flex-direction: column; align-items: flex-start; }
+    .ad-upd-prod-img-preview { width: 100%; height: 200px; }
+    
+    .ad-upd-prod-btn-submit { width: 100%; justify-content: center; } 
+    .ad-upd-prod-topbar { justify-content: center; }
+}

@@ -1,85 +1,180 @@
-.account-container {
-    margin-left: 20%;
-    width: 80%;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* ==================== ADMIN DATA LIST ACCOUNT LAYOUT ==================== */
+.list-account-container {
+    margin-left: var(--sidebar-width, 280px);
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--bg-light, #f4f7f6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Đảm bảo padding không làm tràn container */
 }
 
-.account-bangdulieu {
+.list-account-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--deep-green, #218282);
+    padding: 30px;
+    animation: listAccountFadeIn 0.5s ease-out;
     width: 100%;
-    border-collapse: collapse;
+    box-sizing: border-box;
 }
 
-.account-bangdulieu th,
-.account-bangdulieu td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+@keyframes listAccountFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.account-bangdulieu th {
-    background-color: #fff;
-    color: #000;
-    font-size: 15px;
-    font-weight: bold;
+/* ==================== HEADER & ALERTS ==================== */
+.list-account-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 25px; 
+    border-bottom: 2px solid #f0f0f0; 
+    padding-bottom: 15px;
+    flex-wrap: wrap; /* Chống tràn text tiêu đề khi màn hình quá nhỏ */
+    gap: 15px;
 }
 
-.account-bangdulieu tr:nth-child(odd) {
-    font-size: 15px;
-    background-color: #f2f2f2;
+.list-account-header h1 { 
+    font-size: 26px; 
+    font-weight: 800; 
+    color: var(--deep-green, #218282); 
+    text-transform: uppercase; 
+    margin: 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
 }
 
-.account-bangdulieu tr:hover {
-    background-color: #ddd;
+.list-account-alert { 
+    padding: 15px 20px; 
+    border-radius: 8px; 
+    margin-bottom: 25px; 
+    font-size: 15px; 
+    font-weight: 600; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    animation: listAccountSlideDown 0.4s ease-out; 
+    word-break: break-word; /* Chống tràn nội dung thông báo */
 }
 
-.account-bangdulieu tr td,
-.account-bangdulieu tr th {
-    text-align: center;
+@keyframes listAccountSlideDown { 
+    from { opacity: 0; transform: translateY(-10px); } 
+    to { opacity: 1; transform: translateY(0); } 
 }
 
-.account-bangdulieu tr td a {
-    text-decoration: none;
+.list-account-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.list-account-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+
+/* ==================== MODERN DATA TABLE ==================== */
+.list-account-table-wrapper { 
+    width: 100%; 
+    border-radius: 8px; 
+    overflow-x: auto; /* Kích hoạt cuộn ngang nếu bảng quá rộng so với màn hình */
+    -webkit-overflow-scrolling: touch;
 }
 
-.account-bangdulieu tr td a.edit-btn {
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    transition: background-color 0.3s ease;
+.list-account-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left; 
+    min-width: 800px; /* Đảm bảo bảng không bị ép quá nhỏ gây vỡ layout */
 }
 
-.account-bangdulieu tr td a.edit-btn i {
-    margin-right: 5px;
+.list-account-table thead { background-color: #f8fafc; border-radius: 8px 8px 0 0; }
+.list-account-table th { padding: 18px 15px; font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
+.list-account-table td { padding: 18px 15px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; word-break: break-word; } /* Thêm word-break */
+.list-account-table tbody tr { transition: background-color 0.2s; }
+.list-account-table tbody tr:hover { background-color: #f4fcf9; }
+
+/* GỘP CỘT THÔNG MINH */
+.list-account-user-info { display: flex; align-items: center; gap: 12px; }
+.list-account-avatar { width: 45px; height: 45px; border-radius: 50%; background-color: #e2e8f0; color: #64748b; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.list-account-user-details { display: flex; flex-direction: column; gap: 4px; overflow: hidden; } /* Ngăn tràn text */
+.list-account-user-name { font-size: 16px; font-weight: 700; color: #1e293b; }
+.list-account-user-id { font-size: 13px; color: #64748b; font-weight: 600; word-break: break-all; } /* ID hoặc User có thể rất dài */
+
+.list-account-contact { display: flex; flex-direction: column; gap: 5px; }
+.list-account-contact-item { font-size: 14px; color: #475569; display: flex; align-items: center; gap: 8px; word-break: break-all; }
+.list-account-contact-item i { color: var(--deep-green, #218282); width: 16px; text-align: center; flex-shrink: 0; }
+
+/* ==================== BADGE QUYỀN HẠN ==================== */
+.list-account-role-badge { padding: 6px 12px; border-radius: 50px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.list-account-role-badge.admin { background-color: #fef2f2; color: var(--brilliant-red, #D11313); border: 1px solid #fca5a5; }
+.list-account-role-badge.user { background-color: #f0fdfa; color: #059669; border: 1px solid #6ee7b7; }
+
+/* ==================== NÚT HÀNH ĐỘNG ==================== */
+.list-account-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.list-account-btn { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 8px; color: #fff; text-decoration: none; transition: all 0.2s; font-size: 14px; flex-shrink: 0; }
+.list-account-btn-edit { background-color: var(--deep-green, #218282); box-shadow: 0 3px 8px rgba(33, 130, 130, 0.2); }
+.list-account-btn-edit:hover { background-color: #166161; transform: translateY(-2px); }
+.list-account-btn-delete { background-color: var(--brilliant-red, #D11313); box-shadow: 0 3px 8px rgba(209, 19, 19, 0.2); }
+.list-account-btn-delete:hover { background-color: #b91010; transform: translateY(-2px); }
+
+/* ==================== PHÂN TRANG ==================== */
+.list-account-pagination { margin-top: 30px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.list-account-pagination a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; font-weight: 700; color: #475569; text-decoration: none; transition: all 0.3s; background-color: #fff; box-sizing: border-box; }
+.list-account-pagination a:hover { border-color: var(--deep-green, #218282); color: var(--deep-green, #218282); background-color: #f8fafc; }
+.list-account-pagination a.active { background-color: var(--deep-green, #218282); color: #ffffff; border-color: var(--deep-green, #218282); box-shadow: 0 4px 10px rgba(33, 130, 130, 0.25); }
+
+/* ==================== RESPONSIVE CARD TABLE (CHỈ ÁP DỤNG TRÊN MOBILE) ==================== */
+@media (max-width: 980px) {
+    .list-account-container { margin-left: 0; padding: 80px 20px 30px 20px; }
+    
+    .list-account-table { min-width: 100%; } /* Gỡ bỏ min-width cứng trên mobile */
+    .list-account-table thead { display: none; }
+    
+    .list-account-table, .list-account-table tbody, .list-account-table tr, .list-account-table td { display: block; width: 100%; box-sizing: border-box; }
+    
+    .list-account-table tr {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        padding: 15px 20px;
+    }
+    
+    .list-account-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; /* Sửa align-items thành flex-start để text dài tự rớt dòng đẹp hơn */
+        padding: 12px 0;
+        border-bottom: 1px dashed #e2e8f0;
+        text-align: right;
+        gap: 15px; /* Tạo khoảng cách giữa lable và nội dung */
+    }
+    
+    .list-account-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        font-size: 13px;
+        flex-shrink: 0;
+        text-align: left;
+    }
+
+    /* Đảm bảo nội dung không đè lên nhãn (label) khi quá dài */
+    .list-account-table td > span, 
+    .list-account-table td > div {
+        flex: 1;
+        min-width: 0; /* Reset min-width để flexbox cho phép ngắt chữ */
+    }
+    
+    .list-account-table td:last-child { border-bottom: none; padding-bottom: 0; }
+    
+    .list-account-user-info { flex-direction: row-reverse; text-align: right; justify-content: flex-start; }
+    .list-account-user-details { align-items: flex-end; }
+    .list-account-contact { align-items: flex-end; }
+    .list-account-actions { justify-content: flex-end; }
 }
 
-.account-bangdulieu tr td a.edit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Pagination styles */
-.account-pagination {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.account-pagination a {
-    color: black;
-    font-size: 15px;
-    padding: 5px 10px;
-    text-decoration: none;
-    margin: 2px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-/* Pagination hover styles */
-.account-pagination a:hover {
-    background-color: #f2f2f2;
+@media (max-width: 768px) {
+    .list-account-card { padding: 20px 15px; }
+    .list-account-header h1 { font-size: 22px; }
+    .list-account-table tr { padding: 10px 15px; }
 }

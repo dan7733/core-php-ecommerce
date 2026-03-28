@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap');
+
+:root {
+    --deep-green: #218282; /* Xanh dương sâu */
+    --deep-green-hover: #166161; /* Xanh đậm hơn khi hover */
+    --bright-white: #FFFFFF; /* Trong sáng */
+    --brilliant-red: #D11313; /* Đỏ chói lọi */
+    --pure-white: #FFFFFF; /* Trắng thuần khiết */
+    --bg-light: #f4f7f6; /* Nền xám nhạt hiện đại */
+    --text-dark: #333333;
+    --sidebar-width: 280px; /* Cố định chiều rộng menu trái */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}

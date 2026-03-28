@@ -1,5 +1,5 @@
-/* ==================== UPDATE ACCOUNT LAYOUT (PC) ==================== */
-.ad-upd-acc-wrapper {
+/* ==================== UPDATE CATEGORY LAYOUT (PC) ==================== */
+.ad-upd-cat-wrapper {
     margin-left: var(--sidebar-width, 280px); /* Chừa chỗ cho Sidebar */
     padding: 40px;
     min-height: 100vh;
@@ -9,14 +9,14 @@
     box-sizing: border-box;
 }
 
-.ad-upd-acc-card {
+.ad-upd-cat-card {
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
     border-top: 5px solid var(--deep-green, #218282);
     padding: 30px 40px;
-    max-width: 800px; /* Giới hạn độ rộng Form cho đẹp, không bị bè ra quá to */
-    margin: 0 auto; /* Căn giữa Form */
+    max-width: 700px; /* Nhỏ hơn Update Account một chút vì ít trường nhập liệu hơn */
+    margin: 0 auto; /* Căn giữa màn hình */
     animation: formFadeIn 0.5s ease-out;
 }
 
@@ -26,37 +26,37 @@
 }
 
 /* ==================== HEADER & ALERTS ==================== */
-.ad-upd-acc-header {
+.ad-upd-cat-header {
     display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;
 }
-.ad-upd-acc-header h1 { font-size: 26px; font-weight: 800; color: var(--deep-green, #218282); text-transform: uppercase; margin: 0; display: flex; align-items: center; gap: 10px; }
+.ad-upd-cat-header h1 { font-size: 26px; font-weight: 800; color: var(--deep-green, #218282); text-transform: uppercase; margin: 0; display: flex; align-items: center; gap: 10px; }
 
-.ad-upd-acc-btn-back {
+.ad-upd-cat-btn-back {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 8px 15px; border-radius: 8px;
     background-color: #f1f5f9; color: #475569;
     text-decoration: none; font-weight: 600; font-size: 14px;
     transition: all 0.2s;
 }
-.ad-upd-acc-btn-back:hover { background-color: #e2e8f0; color: #1e293b; }
+.ad-upd-cat-btn-back:hover { background-color: #e2e8f0; color: #1e293b; }
 
-.ad-upd-acc-alert { padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 10px; animation: slideDown 0.4s ease-out; }
-.ad-upd-acc-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
-.ad-upd-acc-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+.ad-upd-cat-alert { padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 10px; animation: slideDown 0.4s ease-out; }
+.ad-upd-cat-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.ad-upd-cat-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
 
 /* ==================== FORM CHÍNH ==================== */
-.ad-upd-acc-grid-2 {
+.ad-upd-cat-grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
-.ad-upd-acc-form-group {
+.ad-upd-cat-form-group {
     margin-bottom: 22px;
 }
 
-.ad-upd-acc-form-group label {
+.ad-upd-cat-form-group label {
     display: block;
     font-weight: 600;
     color: #475569;
@@ -64,17 +64,17 @@
     font-size: 14px;
 }
 
-.ad-upd-acc-form-group label small {
+.ad-upd-cat-form-group label small {
     color: #94a3b8;
     font-weight: 400;
 }
 
-.ad-upd-acc-input-wrapper {
+.ad-upd-cat-input-wrapper {
     position: relative;
     width: 100%;
 }
 
-.ad-upd-acc-icon {
+.ad-upd-cat-icon {
     position: absolute;
     left: 15px;
     top: 50%;
@@ -85,7 +85,7 @@
 }
 
 /* Định dạng thẻ Input */
-.ad-upd-acc-input-wrapper input {
+.ad-upd-cat-input-wrapper input {
     width: 100%;
     padding: 14px 15px 14px 45px; /* Thụt lề trái 45px để chừa chỗ cho Icon */
     border: 1.5px solid #cbd5e1;
@@ -99,27 +99,27 @@
 }
 
 /* Hiệu ứng khi Focus (Nhấp chuột vào ô) */
-.ad-upd-acc-input-wrapper input:focus {
+.ad-upd-cat-input-wrapper input:focus {
     outline: none;
     border-color: var(--deep-green, #218282);
     background-color: #ffffff;
     box-shadow: 0 0 0 4px rgba(33, 130, 130, 0.1);
 }
 
-.ad-upd-acc-input-wrapper input:focus + .ad-upd-acc-icon,
-.ad-upd-acc-input-wrapper input:focus ~ .ad-upd-acc-icon {
+.ad-upd-cat-input-wrapper input:focus + .ad-upd-cat-icon,
+.ad-upd-cat-input-wrapper input:focus ~ .ad-upd-cat-icon {
     color: var(--deep-green, #218282); /* Icon đổi màu xanh khi Focus */
 }
 
 /* ==================== NÚT SUBMIT ==================== */
-.ad-upd-acc-submit-area {
+.ad-upd-cat-submit-area {
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid #e2e8f0;
     text-align: right;
 }
 
-.ad-upd-acc-btn-submit {
+.ad-upd-cat-btn-submit {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -135,7 +135,7 @@
     box-shadow: 0 4px 12px rgba(33, 130, 130, 0.25);
 }
 
-.ad-upd-acc-btn-submit:hover {
+.ad-upd-cat-btn-submit:hover {
     background-color: #166161;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(33, 130, 130, 0.35);
@@ -144,15 +144,15 @@
 /* ==================== RESPONSIVE CHO MOBILE ==================== */
 @media (max-width: 980px) {
     /* Trả lại không gian Sidebar trên Mobile */
-    .ad-upd-acc-wrapper { margin-left: 0; padding: 80px 15px 30px 15px; }
+    .ad-upd-cat-wrapper { margin-left: 0; padding: 80px 15px 30px 15px; }
 }
 
 @media (max-width: 768px) {
-    .ad-upd-acc-card { padding: 25px 20px; }
-    .ad-upd-acc-header h1 { font-size: 22px; }
+    .ad-upd-cat-card { padding: 25px 20px; }
+    .ad-upd-cat-header h1 { font-size: 22px; }
     
-    /* Gộp ô Họ và Tên thành 1 cột trên điện thoại */
-    .ad-upd-acc-grid-2 { grid-template-columns: 1fr; gap: 0; }
+    /* Gộp ô Nổi bật và Thứ tự thành 1 cột trên điện thoại */
+    .ad-upd-cat-grid-2 { grid-template-columns: 1fr; gap: 0; }
     
-    .ad-upd-acc-btn-submit { width: 100%; justify-content: center; } /* Nút tràn viền trên đt */
+    .ad-upd-cat-btn-submit { width: 100%; justify-content: center; } /* Nút tràn viền trên đt */
 }

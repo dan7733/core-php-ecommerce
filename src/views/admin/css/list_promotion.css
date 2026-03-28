@@ -1,85 +1,185 @@
-.promotion22-container {
-    margin-left: 20%;
-    width: 80%;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* ==================== PROMOTION LIST LAYOUT (PC) ==================== */
+.list-promo-container {
+    margin-left: var(--sidebar-width, 280px); /* Chừa chỗ cho Sidebar */
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--bg-light, #f4f7f6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Ngăn padding làm tràn container */
 }
 
-.promotion-bangdulieu {
+.list-promo-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--deep-green, #218282);
+    padding: 30px;
+    animation: listPromoFadeIn 0.5s ease-out;
     width: 100%;
-    border-collapse: collapse;
+    box-sizing: border-box;
 }
 
-.promotion-bangdulieu th,
-.promotion-bangdulieu td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+@keyframes listPromoFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.promotion-bangdulieu th {
-    background-color: #fff;
-    color: #000;
-    font-size: 15px;
-    font-weight: bold;
+/* ==================== HEADER & ALERTS ==================== */
+.list-promo-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 25px; 
+    border-bottom: 2px solid #f0f0f0; 
+    padding-bottom: 15px;
+    flex-wrap: wrap; /* Tránh đè tiêu đề trên màn hình nhỏ */
+    gap: 15px;
 }
 
-.promotion-bangdulieu tr:nth-child(odd) {
-    font-size: 15px;
-    background-color: #f2f2f2;
+.list-promo-header h1 { 
+    font-size: 26px; 
+    font-weight: 800; 
+    color: var(--deep-green, #218282); 
+    text-transform: uppercase; 
+    margin: 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
 }
 
-.promotion-bangdulieu tr:hover {
-    background-color: #ddd;
+.list-promo-alert { 
+    padding: 15px 20px; 
+    border-radius: 8px; 
+    margin-bottom: 25px; 
+    font-size: 15px; 
+    font-weight: 600; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    animation: listPromoSlideDown 0.4s ease-out; 
+    word-break: break-word; /* Chống tràn chữ ở thông báo */
 }
 
-.promotion-bangdulieu tr td,
-.promotion-bangdulieu tr th {
-    text-align: center;
+@keyframes listPromoSlideDown { 
+    from { opacity: 0; transform: translateY(-10px); } 
+    to { opacity: 1; transform: translateY(0); } 
 }
 
-.promotion-bangdulieu tr td a {
-    text-decoration: none;
+.list-promo-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.list-promo-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+
+/* ==================== BẢNG DỮ LIỆU KHUYẾN MÃI ==================== */
+.list-promo-table-wrapper { 
+    width: 100%; 
+    border-radius: 8px; 
+    overflow-x: auto; /* Sinh thanh cuộn ngang khi màn hình bị ép */
+    -webkit-overflow-scrolling: touch;
 }
 
-.promotion-bangdulieu tr td a.edit-btn {
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    transition: background-color 0.3s ease;
+.list-promo-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left; 
+    min-width: 750px; /* Giữ form bảng trên PC/Tablet */
 }
 
-.promotion-bangdulieu tr td a.edit-btn i {
-    margin-right: 5px;
+.list-promo-table thead { background-color: #f8fafc; border-radius: 8px 8px 0 0; }
+.list-promo-table th { padding: 18px 15px; font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
+.list-promo-table td { padding: 18px 15px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+.list-promo-table tbody tr { transition: background-color 0.2s; }
+.list-promo-table tbody tr:hover { background-color: #f4fcf9; }
+
+/* Thành phần trong bảng */
+.list-promo-id-badge { background: #f1f5f9; color: var(--deep-green, #218282); padding: 5px 10px; border-radius: 6px; font-weight: bold; font-size: 14px; white-space: nowrap; }
+.list-promo-title-text { font-size: 16px; font-weight: 600; color: #1e293b; display: block; word-break: break-word; }
+.list-promo-summary-text { 
+    color: #64748b; 
+    font-size: 14px; 
+    max-width: 350px; /* Giới hạn độ dài trên PC */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.list-promo-text-center { text-align: center; }
+
+/* ==================== NÚT HÀNH ĐỘNG ==================== */
+.list-promo-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.list-promo-btn { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 8px; color: #fff; text-decoration: none; transition: all 0.2s; font-size: 14px; flex-shrink: 0; }
+.list-promo-btn-edit { background-color: var(--deep-green, #218282); box-shadow: 0 3px 8px rgba(33, 130, 130, 0.2); }
+.list-promo-btn-edit:hover { background-color: #166161; transform: translateY(-2px); color: #fff; }
+.list-promo-btn-delete { background-color: var(--brilliant-red, #D11313); box-shadow: 0 3px 8px rgba(209, 19, 19, 0.2); }
+.list-promo-btn-delete:hover { background-color: #b91010; transform: translateY(-2px); color: #fff;}
+
+/* ==================== PHÂN TRANG ==================== */
+.list-promo-pagination { margin-top: 30px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.list-promo-pagination a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; font-weight: 700; color: #475569; text-decoration: none; transition: all 0.3s; background-color: #fff; box-sizing: border-box; }
+.list-promo-pagination a:hover { border-color: var(--deep-green, #218282); color: var(--deep-green, #218282); background-color: #f8fafc; }
+.list-promo-pagination a.active { background-color: var(--deep-green, #218282); color: #ffffff; border-color: var(--deep-green, #218282); box-shadow: 0 4px 10px rgba(33, 130, 130, 0.25); }
+
+/* ==================== RESPONSIVE CARD TABLE (THUẬT TOÁN MOBILE) ==================== */
+@media (max-width: 980px) {
+    /* Trả lại không gian Sidebar trên Mobile */
+    .list-promo-container { margin-left: 0; padding: 80px 20px 30px 20px; }
+    
+    .list-promo-table { min-width: 100%; } /* Gỡ bỏ fix cứng độ rộng trên mobile */
+    .list-promo-table thead { display: none; }
+    
+    /* BIẾN BẢNG THÀNH CARD ĐỘC LẬP */
+    .list-promo-table, .list-promo-table tbody, .list-promo-table tr, .list-promo-table td { display: block; width: 100%; box-sizing: border-box; }
+    
+    .list-promo-table tr {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        padding: 15px 20px;
+    }
+    
+    /* CHIA DÒNG BÊN TRONG CARD MỚI */
+    .list-promo-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; /* Sửa từ center thành flex-start để không đè label khi chữ xuống dòng */
+        padding: 12px 0;
+        border-bottom: 1px dashed #e2e8f0;
+        text-align: right;
+        gap: 15px; /* Giữ khoảng cách giữa nhãn và nội dung */
+    }
+    
+    /* LẤY data-label TỪ HTML LÀM TIÊU ĐỀ DÒNG BÊN TRÁI */
+    .list-promo-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin-right: 0;
+        text-align: left;
+        flex-shrink: 0; /* Ngăn label bị co ép lại */
+    }
+    
+    .list-promo-table td:last-child { border-bottom: none; padding-bottom: 0; }
+    
+    /* Căn lại các thẻ con */
+    .list-promo-actions { justify-content: flex-end; }
+    .list-promo-text-center { text-align: right; }
+    
+    /* Xử lý tóm tắt trên mobile bằng Flexbox thay vì max-width tĩnh (vw) */
+    .list-promo-summary-text { 
+        max-width: none; /* Xóa bỏ giới hạn cứng */
+        flex: 1; /* Cho phép chiếm hết không gian trống */
+        min-width: 0; /* Bắt buộc để flexbox cho phép cắt chữ bằng ba chấm (ellipsis) */
+        text-align: right; 
+    }
+    
+    .list-promo-title-text {
+        text-align: right;
+    }
 }
 
-.promotion-bangdulieu tr td a.edit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Pagination styles */
-.promotion-pagination {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.promotion-pagination a {
-    color: black;
-    font-size: 15px;
-    padding: 5px 10px;
-    text-decoration: none;
-    margin: 2px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-/* Pagination hover styles */
-.promotion-pagination a:hover {
-    background-color: #f2f2f2;
+@media (max-width: 768px) {
+    .list-promo-card { padding: 20px 15px; }
+    .list-promo-header h1 { font-size: 22px; }
 }

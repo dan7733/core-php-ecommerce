@@ -1,0 +1,235 @@
+/* ==================== ADMIN PRODUCT LAYOUT ==================== */
+/* Tiền tố 'admin-prod-' để đảm bảo code độc lập, không xung đột */
+
+.admin-prod-container {
+    margin-left: var(--sidebar-width, 280px);
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--bg-light, #f4f7f6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.admin-prod-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 850px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--deep-green, #218282);
+    padding: 40px 50px;
+    animation: prodFadeIn 0.5s ease-out;
+}
+
+@keyframes prodFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== HEADER & ALERTS ==================== */
+.admin-prod-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.admin-prod-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--deep-green, #218282);
+    text-transform: uppercase;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.admin-prod-alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.admin-prod-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.admin-prod-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+
+/* ==================== FORM GRID SYSTEM ==================== */
+.admin-prod-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.admin-prod-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 30px;
+}
+
+/* Các trường full chiều rộng (Mô tả, Nút bấm) */
+.full-width {
+    grid-column: span 2;
+}
+
+.admin-prod-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-prod-group label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    display: block;
+    margin: 0;
+}
+
+.admin-prod-group label .required { color: var(--brilliant-red, #D11313); margin-left: 3px; }
+
+/* ==================== INPUT FIELDS WITH ICONS ==================== */
+.admin-prod-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.admin-prod-input-wrapper i.icon-left {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: 16px;
+    transition: color 0.3s;
+    z-index: 2;
+}
+
+/* Căn icon cho textarea nếu bạn định dùng nó sau này */
+.admin-prod-input-wrapper.textarea-wrapper i.icon-left { top: 18px; transform: none; }
+
+.admin-prod-input-wrapper input,
+.admin-prod-input-wrapper select,
+.admin-prod-input-wrapper textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    height: 50px;
+    padding: 0 15px 0 45px !important;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #1e293b;
+    background-color: #f8fafc;
+    transition: all 0.3s;
+    outline: none;
+    font-family: inherit;
+}
+
+/* Custom riêng cho Textarea */
+.admin-prod-input-wrapper textarea {
+    padding: 15px 15px 15px 45px !important;
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+}
+
+/* Custom riêng cho File Upload */
+.admin-prod-input-wrapper input[type="file"] {
+    padding: 12px 15px 12px 45px !important;
+    line-height: 22px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+/* Custom riêng cho Select Box (Dropdown) */
+.admin-prod-input-wrapper select {
+    appearance: none; /* Ẩn mũi tên mặc định của trình duyệt */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+/* Tạo mũi tên custom cho Select */
+.admin-prod-input-wrapper i.icon-right {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    pointer-events: none; /* Không cản trở click */
+}
+
+.admin-prod-input-wrapper input::placeholder,
+.admin-prod-input-wrapper textarea::placeholder { color: #94a3b8; font-weight: 500; }
+
+/* Focus & Hover */
+.admin-prod-input-wrapper input:hover,
+.admin-prod-input-wrapper select:hover,
+.admin-prod-input-wrapper textarea:hover { border-color: #cbd5e1; }
+
+.admin-prod-input-wrapper input:focus,
+.admin-prod-input-wrapper select:focus,
+.admin-prod-input-wrapper textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--deep-green, #218282);
+    box-shadow: 0 0 0 3px rgba(33, 130, 130, 0.15);
+}
+
+.admin-prod-input-wrapper input:focus + i.icon-left,
+.admin-prod-input-wrapper select:focus + i.icon-left,
+.admin-prod-input-wrapper textarea:focus + i.icon-left,
+.admin-prod-input-wrapper input:not(:placeholder-shown) + i.icon-left,
+.admin-prod-input-wrapper select:valid + i.icon-left,
+.admin-prod-input-wrapper textarea:not(:placeholder-shown) + i.icon-left {
+    color: var(--deep-green, #218282);
+}
+
+/* ==================== SUBMIT BUTTON ==================== */
+.admin-prod-action { margin-top: 10px; }
+
+.admin-prod-btn {
+    width: 100%;
+    height: 54px;
+    background-color: var(--deep-green, #218282);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(33, 130, 130, 0.2);
+}
+
+.admin-prod-btn:hover {
+    background-color: var(--deep-green-hover, #166161);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(33, 130, 130, 0.35);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 980px) {
+    .admin-prod-container { margin-left: 0; padding: 80px 20px 40px 20px; }
+}
+
+@media (max-width: 768px) {
+    .admin-prod-card { padding: 30px 20px; }
+    .admin-prod-grid { grid-template-columns: 1fr; gap: 20px; } /* Ép về 1 cột */
+    .full-width { grid-column: span 1; }
+    .admin-prod-header h1 { font-size: 24px; }
+}

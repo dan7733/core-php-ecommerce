@@ -1,68 +1,238 @@
-.container-tintuc{
-    width: 85%;
-    height: 105vh;
-    margin-left: 15%;
-    background-color: #f0f0f0;
+/* ==================== ADMIN NEWS LAYOUT ==================== */
+.admin-news-container {
+    margin-left: var(--sidebar-width, 280px);
+    padding: 40px;
+    min-height: 100vh;
+    background-color: var(--bg-light, #f4f7f6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
 
-}
- .tieude-tintuc{
-     display: flex;
-     padding-top: 40px;
-     margin-left: 85px;
-    
- }
- .tintuc-container {
+.admin-news-card {
+    background-color: #ffffff;
     width: 100%;
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
- 
+    max-width: 800px; /* Nới rộng hơn form Danh mục vì có Textarea */
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--deep-green, #218282);
+    padding: 40px 50px;
+    animation: newsFadeIn 0.5s ease-out;
 }
-.tintuc-container form{
-    width: 80% !important;
+
+@keyframes newsFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-.form-group {
+
+/* ==================== HEADER & ALERT ==================== */
+.admin-news-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.admin-news-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--deep-green, #218282);
+    text-transform: uppercase;
+    margin: 0;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    justify-content: center;
+    gap: 12px;
 }
 
-.form-group label {
-    width: 30%; /* Adjust the width as necessary */
-    margin-right: 10px;
-    font-weight: bold;
-    text-align: right; /* Align label text to the right */
+.admin-news-alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideDown 0.4s ease-out;
 }
 
-.form-group input[type="text"],
-.form-group input[type="file"],
-.form-group input[type="number"] {
-    width: 70%; /* Adjust the width as necessary */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.admin-news-alert.error { background-color: #fff5f5; color: var(--brilliant-red, #D11313); border-left: 5px solid var(--brilliant-red, #D11313); }
+.admin-news-alert.success { background-color: #f0fdf4; color: #27ae60; border-left: 5px solid #27ae60; }
+
+/* ==================== FORM INPUTS ==================== */
+.admin-news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
-input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+.admin-news-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-news-group label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
     display: block;
-    margin: 0 auto;
+    margin: 0;
 }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
+.admin-news-group label .required { color: var(--brilliant-red, #D11313); }
+
+/* WRAPPER CHỨA ICON BÊN TRONG */
+.admin-news-input-wrapper {
+    position: relative;
+    width: 100%;
 }
-.tintucsp-img{
-    width: 50%;
-    height: auto;
+
+.admin-news-input-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: 16px;
+    transition: color 0.3s;
+    z-index: 2;
+}
+
+/* Căn lại icon cho Textarea (Đẩy lên đầu thay vì căn giữa) */
+.admin-news-input-wrapper.textarea-wrapper i {
+    top: 18px;
+    transform: none;
+}
+
+/* Các thẻ Input chung */
+.admin-news-input-wrapper input,
+.admin-news-input-wrapper textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 15px 0 45px !important; /* Chừa 45px bên trái cho Icon */
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #1e293b;
+    background-color: #f8fafc;
+    transition: all 0.3s;
+    outline: none;
+    font-family: inherit;
+}
+
+.admin-news-input-wrapper input { height: 50px; }
+
+/* Thiết kế riêng cho ô chọn File (Hình ảnh) */
+.admin-news-input-wrapper input[type="file"] {
+    padding: 12px 15px 12px 45px !important;
+    line-height: 22px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+/* Thiết kế riêng cho ô Textarea (Nội dung) */
+.admin-news-input-wrapper textarea {
+    padding: 15px 15px 15px 45px !important;
+    resize: vertical; /* Cho phép kéo giãn chiều cao */
+    line-height: 1.6;
+    min-height: 150px;
+}
+
+.admin-news-input-wrapper input::placeholder,
+.admin-news-input-wrapper textarea::placeholder { color: #94a3b8; font-weight: 500; }
+
+/* Hiệu ứng Hover & Focus */
+.admin-news-input-wrapper input:hover,
+.admin-news-input-wrapper textarea:hover { border-color: #cbd5e1; }
+
+.admin-news-input-wrapper input:focus,
+.admin-news-input-wrapper textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--deep-green, #218282);
+    box-shadow: 0 0 0 3px rgba(33, 130, 130, 0.15);
+}
+
+.admin-news-input-wrapper input:focus + i,
+.admin-news-input-wrapper textarea:focus + i,
+.admin-news-input-wrapper input:not(:placeholder-shown) + i,
+.admin-news-input-wrapper textarea:not(:placeholder-shown) + i {
+    color: var(--deep-green, #218282);
+}
+
+/* ==================== SUBMIT BUTTON ==================== */
+.admin-news-action { margin-top: 15px; }
+
+.admin-news-btn {
+    width: 100%;
+    height: 54px;
+    background-color: var(--deep-green, #218282);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(33, 130, 130, 0.2);
+}
+
+.admin-news-btn:hover {
+    background-color: var(--deep-green-hover, #166161);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(33, 130, 130, 0.35);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 980px) {
+    .admin-news-container { margin-left: 0; padding: 80px 20px 40px 20px; }
+}
+
+@media (max-width: 768px) {
+    .admin-news-card { padding: 30px 20px; }
+    .admin-news-header h1 { font-size: 22px; }
+    .admin-news-btn { font-size: 16px; padding: 14px; }
+}
+/* ==================== CUSTOM GIAO DIỆN CKEDITOR 5 ==================== */
+.editor-container {
+    width: 100%;
+}
+
+/* Fix chiều cao tối thiểu cho khung soạn thảo */
+.ck-editor__editable_inline {
+    min-height: 250px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 15px !important;
+    color: #1e293b !important;
+    line-height: 1.6 !important;
+}
+
+/* Bo góc và màu nền cho Thanh công cụ (Toolbar) */
+.ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+    border-radius: 8px 8px 0 0 !important;
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* Bo góc cho phần gõ chữ bên dưới */
+.ck.ck-editor__main > .ck-editor__editable {
+    border-radius: 0 0 8px 8px !important;
+    border-color: #e2e8f0 !important;
+    background-color: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng focus (phát sáng viền xanh) giống các input khác */
+.ck.ck-editor__main > .ck-editor__editable.ck-focused {
+    border-color: var(--deep-green, #218282) !important;
+    box-shadow: 0 0 0 3px rgba(33, 130, 130, 0.15) !important;
 }
